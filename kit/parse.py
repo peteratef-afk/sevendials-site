@@ -15,7 +15,7 @@ if i>=0:
 mp=0
 m=re.search(r'totpage\\?":(\d+)',s) or re.search(r'totpage"?\s*:\s*(\d+)',s)
 if m: mp=int(m.group(1))
-import os as _o; out=_o.path.join(_o.environ.get('OUT_DIR','out'),f'{brand}.jsonl')
+out=os.path.join(os.environ.get('OUT_DIR','out'),f'{brand}.jsonl'); os.makedirs(os.path.dirname(out) or '.',exist_ok=True)
 seen=set()
 if os.path.exists(out):
     for line in open(out):
