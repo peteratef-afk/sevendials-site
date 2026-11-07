@@ -62,6 +62,8 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
             return int(round(ex*GST))          # incl. GST (ex x 1.10)
         price=conv(hkd); was=None; flags=[]; src_price='vip'; sheet_base=None
         sm=None if brand in SHEET_EXCLUDE else sheet_match(norm(code))
+        # guard: ignore a sheet price that is wildly off the VIP-derived price (bad currency / typo in a dealer post)
+        if sm and price and not (0.35*price <= sm['lowest']*SHEET_MARGIN*GST <= 2.5*price): sm=None
         if sm:
             sheet_base=sm['lowest']; ex=clean_up(sheet_base*SHEET_MARGIN); price=int(round(ex*GST)); src_price='sheet'
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
