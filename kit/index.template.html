@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven Dials | Luxury Watches Australia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1f3864;--navy-d:#152747;--gold:#b8963e;--gold-l:#d4b76a;--red:#c8102e;--ink:#1b1b1b;--mut:#6b7280;--line:#e5e7eb;--bg:#f6f7f9;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+/* top bar */
+.topbar{background:var(--navy-d);color:#cfd6e3;font-size:12px}
+.topbar .wrap{display:flex;align-items:center;gap:18px;min-height:34px;flex-wrap:wrap}
+.topbar .gold{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.topbar .gold b{color:var(--gold-l);font-weight:600}
+.topbar .right{margin-left:auto;display:flex;gap:14px;align-items:center}
+.topbar select{background:transparent;color:#cfd6e3;border:1px solid #3a4f76;border-radius:3px;padding:2px 6px;font-size:12px}
+.topbar a:hover{color:#fff}
+/* header */
+.header{background:var(--white);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;gap:24px;min-height:84px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:46px;height:46px}
+.logo .word{font-family:"Cormorant Garamond",serif;font-size:26px;letter-spacing:.14em;font-weight:600;color:var(--navy);text-transform:uppercase;line-height:1}
+.logo small{display:block;font-family:Inter;font-size:9.5px;letter-spacing:.28em;color:var(--gold);font-weight:600;margin-top:3px}
+.search{flex:1;display:flex;max-width:560px}
+.search input{flex:1;border:1.5px solid var(--navy);border-right:0;padding:9px 14px;font-size:14px;border-radius:3px 0 0 3px;outline:none}
+.search button{background:var(--navy);color:#fff;border:0;padding:0 18px;border-radius:0 3px 3px 0;font-weight:600}
+.hdr-actions{margin-left:auto;display:flex;gap:22px;align-items:center}
+.hdr-actions .act{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--mut);position:relative}
+.hdr-actions .act svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.7}
+.hdr-actions .badge{position:absolute;top:-6px;right:-2px;background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:10px;padding:0 5px;min-width:16px;text-align:center}
+.wa-cta{display:flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:8px 14px;border-radius:4px;font-weight:600;font-size:13px}
+.wa-cta svg{width:18px;height:18px;fill:#fff}
+/* nav */
+.nav{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50}
+.nav ul{list-style:none;display:flex;align-items:stretch}
+.nav li{position:relative}
+.nav li>a{display:block;padding:13px 15px;font-weight:500;font-size:13.5px;letter-spacing:.02em;white-space:nowrap}
+.nav li>a:hover,.nav li>a.on{background:var(--navy-d);color:var(--gold-l)}
+.nav li>a.hl{color:var(--gold-l)}
+.mega{display:none;position:absolute;left:0;top:100%;background:#fff;color:var(--ink);width:960px;box-shadow:0 12px 40px rgba(0,0,0,.18);padding:20px 24px;z-index:60}
+.nav li:hover .mega{display:block}
+.mega h4{font-size:12px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:700}
+.mega .cols{columns:4;column-gap:20px}
+.mega .cols a{display:block;padding:4px 0;font-size:13px;break-inside:avoid}
+.mega .cols a:hover{color:var(--navy);font-weight:600}
+.mega .cols a i{font-style:normal;color:var(--mut);font-size:11.5px}
+.nav .more{margin-left:auto}
+/* hero */
+.hero{margin:18px auto 0}
+.carousel{position:relative;overflow:hidden;border-radius:6px;background:var(--navy);aspect-ratio:1280/420;min-height:220px}
+.slide{position:absolute;inset:0;display:flex;align-items:center;padding:0 7%;opacity:0;transition:opacity .7s;color:#fff}
+.slide.on{opacity:1}
+.slide .txt{max-width:560px;position:relative;z-index:2}
+.slide .kicker{font-size:12px;letter-spacing:.3em;color:var(--gold-l);text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.slide h2{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,4.2vw,56px);line-height:1.05;font-weight:600;margin-bottom:14px}
+.slide p{font-size:15px;color:#d7dde9;margin-bottom:22px;max-width:460px}
+.btn{display:inline-block;background:var(--gold);color:#fff;padding:11px 22px;border-radius:3px;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:0}
+.btn.ghost{background:transparent;border:1.5px solid #fff}
+.btn.navy{background:var(--navy)}
+.btn.red{background:var(--red)}
+.slide .art{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:34%;max-width:360px;opacity:.95}
+.dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3}
+.dots b{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer}
+.dots b.on{background:var(--gold-l)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:0;width:40px;height:40px;border-radius:50%;font-size:20px;z-index:3}
+.arrow.l{left:12px}.arrow.r{right:12px}
+/* category strip */
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:18px auto}
+.strip a{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 10px;text-align:center;font-weight:600;font-size:13px;transition:.2s}
+.strip a:hover{border-color:var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.strip a span{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:3px}
+.strip a svg{width:34px;height:34px;stroke:var(--navy);fill:none;stroke-width:1.5;margin-bottom:6px}
+/* sections */
+.sec{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:18px auto}
+.sec-h{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--navy);margin-bottom:16px;padding-bottom:8px}
+.sec-h h3{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+.sec-h small{color:var(--mut);font-size:12px}
+.sec-h a.more{margin-left:auto;font-size:12.5px;color:var(--gold);font-weight:600}
+.news{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.news .list a{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.news .list a:hover{color:var(--navy)}
+.news .list time{color:var(--mut);font-size:12px;white-space:nowrap;min-width:84px}
+.brands{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.brands a{border:1px solid var(--line);border-radius:6px;padding:22px 10px;text-align:center;font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;letter-spacing:.04em;color:var(--navy);background:linear-gradient(180deg,#fff,#f6f7f9)}
+.brands a:hover{border-color:var(--gold);color:var(--gold)}
+.brands a span{display:block;font-family:Inter;font-size:11px;color:var(--mut);font-weight:400;letter-spacing:0;margin-top:4px}
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.card{border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden;position:relative;transition:.2s;display:flex;flex-direction:column}
+.card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1);transform:translateY(-2px);border-color:#d9dde5}
+.card .img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px}
+.card .img svg{width:100%;height:100%}
+.card .body{padding:10px 12px 12px;flex:1;display:flex;flex-direction:column}
+.card .brand{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.card .name{font-size:13.5px;font-weight:600;line-height:1.3;margin:3px 0 2px;color:var(--ink)}
+.card .ref{font-size:12px;color:var(--mut)}
+.card .meta{font-size:11.5px;color:var(--mut);margin-top:4px}
+.card .price{margin-top:auto;padding-top:8px;font-weight:700;font-size:16px;color:var(--navy)}
+.card .price s{color:var(--mut);font-weight:400;font-size:12px;margin-right:6px}
+.card .price.poa{font-size:12.5px;color:var(--red)}
+.tag{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+.tag.new{background:var(--navy)}.tag.hot{background:#e8650a}.tag.special{background:var(--red)}.tag.flash{background:#7c3aed}.tag.preowned{background:#2f7d4f}.tag.display{background:#6b7280}
+.sold{position:absolute;inset:0;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;z-index:3}
+.sold span{background:#111;color:#fff;padding:6px 14px;letter-spacing:.2em;font-weight:700;font-size:12px;transform:rotate(-12deg)}
+.cond{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;padding:1px 6px;border-radius:2px;border:1px solid var(--line);color:var(--mut);margin-top:6px;width:max-content}
+/* partners */
+.partners{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;color:var(--mut);font-size:12px}
+.partners .p{font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--navy);padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.apps{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.apps span{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600}
+/* listing page */
+.listing{display:grid;grid-template-columns:240px 1fr;gap:18px;margin:18px auto}
+.side{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px;align-self:start;position:sticky;top:60px;max-height:calc(100vh - 80px);overflow:auto}
+.side h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:12px 0 8px;font-weight:700}
+.side h4:first-child{margin-top:0}
+.side label{display:flex;gap:8px;align-items:center;padding:3px 0;font-size:13px;cursor:pointer}
+.side label i{font-style:normal;color:var(--mut);font-size:11.5px;margin-left:auto}
+.side .brandlist{max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:4px;padding:6px 8px}
+.side input[type=number]{width:100%;border:1px solid var(--line);border-radius:3px;padding:6px 8px;font-size:13px}
+.side .rng{display:flex;gap:6px;align-items:center}
+.side .clear{display:block;width:100%;margin-top:14px;border:1px solid var(--navy);color:var(--navy);background:#fff;padding:8px;border-radius:3px;font-weight:600;font-size:12.5px}
+.toolbar{background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.toolbar h1{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--navy)}
+.toolbar .cnt{color:var(--mut);font-size:12.5px}
+.toolbar select{margin-left:auto;border:1px solid var(--line);border-radius:3px;padding:7px 10px;font-size:13px;background:#fff}
+.crumbs{font-size:12px;color:var(--mut);margin:14px 0 0}
+.crumbs a:hover{color:var(--navy)}
+.pager{display:flex;gap:6px;justify-content:center;margin:18px 0}
+.pager button{border:1px solid var(--line);background:#fff;padding:7px 12px;border-radius:3px;font-size:13px}
+.pager button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.empty{padding:40px;text-align:center;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px}
+/* item page */
+.item{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:24px;margin:16px auto}
+.item .gallery{background:#f4f5f7;border-radius:6px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:34px;position:relative}
+.item .gallery svg{width:100%;height:100%}
+.thumbs{display:flex;gap:8px;margin-top:10px}
+.thumbs div{width:64px;height:64px;border:1px solid var(--line);border-radius:4px;background:#f4f5f7;padding:6px;cursor:pointer}
+.thumbs div.on{border-color:var(--gold)}
+.thumbs svg{width:100%;height:100%}
+.item .brand{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.item h1{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1.1;font-weight:600;color:var(--navy);margin:4px 0 6px}
+.item .ref{color:var(--mut);font-size:14px;margin-bottom:14px}
+.item .bigprice{font-size:30px;font-weight:700;color:var(--navy);margin:8px 0}
+.item .bigprice s{font-size:16px;color:var(--mut);font-weight:400;margin-right:10px}
+.item .bigprice small{display:block;font-size:12px;color:var(--mut);font-weight:400}
+.item .bigprice.poa{font-size:18px;color:var(--red)}
+.pay{font-size:12.5px;color:var(--mut);margin-bottom:14px}
+.pay b{color:var(--ink)}
+.specs{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+.specs td{padding:7px 0;border-bottom:1px solid var(--line)}
+.specs td:first-child{color:var(--mut);width:140px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.cta .btn{padding:13px 22px}
+.cta .btn.wa{background:#25d366}
+.assure{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.assure div{border:1px solid var(--line);border-radius:4px;padding:10px;font-size:11.5px;color:var(--mut);text-align:center}
+.assure div b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px}
+.qty{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.qty button{border:0;background:#f4f5f7;width:34px}
+.qty input{width:44px;border:0;text-align:center}
+/* floating */
+.float{position:fixed;right:14px;bottom:90px;display:flex;flex-direction:column;gap:8px;z-index:70}
+.float a,.float button{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;border:0;box-shadow:0 6px 18px rgba(0,0,0,.2);font-size:10px;font-weight:700;flex-direction:column;gap:1px}
+.float .wa{background:#25d366}
+.float svg{width:20px;height:20px;fill:#fff}
+.cs{position:fixed;right:70px;bottom:90px;width:300px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.2);z-index:70;display:none;overflow:hidden}
+.cs.on{display:block}
+.cs .hd{background:var(--navy);color:#fff;padding:12px 14px;font-weight:600;display:flex;justify-content:space-between}
+.cs .hd button{background:none;border:0;color:#fff;font-size:18px}
+.cs .bd{padding:14px;font-size:13px}
+.cs .staff{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.cs .av{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.cs .staff small{display:block;color:var(--mut);font-size:11.5px}
+/* footer */
+.footer{background:var(--navy-d);color:#aeb8cc;margin-top:30px;font-size:12.5px}
+.footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:34px 0 22px}
+.footer h5{color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;font-weight:700}
+.footer a{display:block;padding:3px 0}
+.footer a:hover{color:#fff}
+.footer .bot{border-top:1px solid #2d4168;padding:14px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11.5px}
+.social{display:flex;gap:8px;margin-top:10px}
+.social a{width:32px;height:32px;border:1px solid #3a4f76;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0}
+.social svg{width:15px;height:15px;fill:#aeb8cc}
+/* drawer / modal */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:380px;max-width:100%;background:#fff;z-index:90;box-shadow:-10px 0 40px rgba(0,0,0,.2);transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer .hd{padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.drawer .hd button{background:none;border:0;font-size:22px}
+.drawer .bd{flex:1;overflow:auto;padding:12px 16px}
+.drawer .ft{padding:16px;border-top:1px solid var(--line)}
+.line{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+.line .th{width:54px;height:54px;background:#f4f5f7;border-radius:4px;padding:4px;flex:none}
+.line .th svg{width:100%;height:100%}
+.line .rm{margin-left:auto;background:none;border:0;color:var(--red);font-size:12px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:80;display:none}
+.overlay.on{display:block}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;width:460px;max-width:94vw;border-radius:8px;z-index:95;display:none;padding:22px}
+.modal.on{display:block}
+.modal h3{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--navy);margin-bottom:8px}
+.modal label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px}
+.modal input,.modal textarea,.modal select{width:100%;border:1px solid var(--line);border-radius:3px;padding:9px 10px;font-size:13px;font-family:inherit}
+.modal .x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:22px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 18px;border-radius:4px;font-size:13px;z-index:99;display:none}
+.toast.on{display:block}
+/* static pages */
+.page{background:#fff;border:1px solid var(--line);border-radius:6px;padding:28px 32px;margin:18px auto;max-width:960px}
+.page h1{font-family:"Cormorant Garamond",serif;font-size:36px;color:var(--navy);margin-bottom:12px;font-weight:600}
+.page h2{font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--navy);margin:20px 0 8px;font-weight:600}
+.page p,.page li{font-size:14px;line-height:1.7;color:#333}
+.page ul{padding-left:20px;margin:8px 0}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px}
+.rev .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.rev p{font-size:13px;margin:8px 0;line-height:1.6}
+.rev small{color:var(--mut)}
+.form2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form2 label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px}
+.form2 input,.form2 select,.form2 textarea{width:100%;border:1px solid var(--line);border-radius:3px;padding:9px 10px;font-size:13px;font-family:inherit}
+.form2 .full{grid-column:1/-1}
+.recent{margin:18px auto}
+.hide{display:none!important}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}.brands{grid-template-columns:repeat(4,1fr)}.mega{width:720px}.mega .cols{columns:3}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.listing{grid-template-columns:1fr}.side{position:static;max-height:none}.item{grid-template-columns:1fr}.news{grid-template-columns:1fr}.strip{grid-template-columns:repeat(3,1fr)}.footer .cols{grid-template-columns:1fr 1fr}.nav ul{overflow-x:auto}.mega{display:none!important}.search{display:none}.hdr-actions .act span{display:none}.slide .art{display:none}.reviews{grid-template-columns:1fr}.form2{grid-template-columns:1fr}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.brands{grid-template-columns:repeat(2,1fr)}.topbar .gold{display:none}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar"><div class="wrap">
+  <div class="gold" id="goldbar"></div>
+  <div class="right">
+    <span>Currency</span>
+    <select id="cur"><option value="AUD">AUD $</option><option value="USD">USD $</option><option value="NZD">NZD $</option><option value="SGD">SGD $</option></select>
+    <a href="#rewards">Dial Points</a>
+    <a href="#trade">Trade Portal</a>
+    <a href="#account" onclick="openModal('login');return false">Login</a>
+    <a href="#account" onclick="openModal('register');return false">Register</a>
+  </div>
+</div></div>
+
+<!-- HEADER -->
+<header class="header"><div class="wrap">
+  <a class="logo" href="#home">
+    <svg class="mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#1f3864" stroke-width="3"/><g stroke="#b8963e" stroke-width="3" stroke-linecap="round"><line x1="50" y1="8" x2="50" y2="16"/><line x1="92" y1="50" x2="84" y2="50"/><line x1="50" y1="92" x2="50" y2="84"/><line x1="8" y1="50" x2="16" y2="50"/><line x1="79.7" y1="20.3" x2="74" y2="26"/><line x1="79.7" y1="79.7" x2="74" y2="74"/><line x1="20.3" y1="79.7" x2="26" y2="74"/><line x1="20.3" y1="20.3" x2="26" y2="26"/></g><path d="M34 30 H66 L46 74" fill="none" stroke="#1f3864" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div><span class="word">Seven Dials</span><small>LUXURY WATCHES · AUSTRALIA</small></div>
+  </a>
+  <form class="search" onsubmit="doSearch(event)"><input id="q" placeholder="Search brand, model or reference (e.g. 126610LN)"><button>Search</button></form>
+  <div class="hdr-actions">
+    <a class="act" href="#watchlist" onclick="openDrawer('wl');return false"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Watchlist</span><b class="badge" id="wlN">0</b></a>
+    <a class="act" href="#cart" onclick="openDrawer('cart');return false"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span>Cart</span><b class="badge" id="cartN">0</b></a>
+    <a class="wa-cta" href="https://wa.me/61499005000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>WhatsApp 0499 005 000</a>
+  </div>
+</div></header>
+
+<!-- NAV -->
+<nav class="nav"><div class="wrap"><ul id="mainnav">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#new">New Arrivals</a></li>
+  <li><a href="#watches">Watches</a><div class="mega"><h4>Featured Brands</h4><div class="cols" id="megaBrands"></div></div></li>
+  <li><a href="#preowned">Pre-Owned</a></li>
+  <li><a href="#flash" class="hl">Flash Deals</a></li>
+  <li><a href="#hot">Hot</a></li>
+  <li><a href="#special">Special</a></li>
+  <li><a href="#display">Display Items</a></li>
+  <li><a href="#sell">Sell Your Watch</a></li>
+  <li><a href="#reviews">Customer Reviews</a></li>
+  <li><a href="#news">Market News</a></li>
+  <li class="more"><a href="#contact">Contact</a></li>
+</ul></div></nav>
+
+<main id="app" class="wrap"></main>
+
+<!-- FLOATING -->
+<div class="float">
+  <a class="wa" href="https://wa.me/61499005000" target="_blank" rel="noopener" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+  <a href="#sell" title="Sell / Buy-price">SELL</a>
+  <button onclick="toggleCS()" title="Customer service">CS</button>
+  <button onclick="openDrawer('recent')" title="Recently viewed">⟲</button>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Top">▲</button>
+</div>
+<div class="cs" id="cs"><div class="hd">Customer Service <button onclick="toggleCS()">×</button></div><div class="bd">
+  <div class="staff"><div class="av">P</div><div><b>Peter</b> · Watches<small>WhatsApp 0499 005 000</small><small>Mon–Sat 9:30am–6pm AEDT</small></div></div>
+  <div class="staff"><div class="av">M</div><div><b>Mina</b> · Sourcing &amp; Trade<small>sales@sevendials.com.au</small><small>Mon–Fri 9:30am–5:30pm AEDT</small></div></div>
+  <p style="margin-top:10px;color:var(--mut);font-size:12px">Showroom by appointment: Level 1, 99 Queen Street, Melbourne VIC 3000</p>
+</div></div>
+
+<!-- DRAWER -->
+<div class="overlay" id="ov" onclick="closeAll()"></div>
+<div class="drawer" id="drawer"><div class="hd"><span id="drTitle">Cart</span><button onclick="closeAll()">×</button></div><div class="bd" id="drBody"></div><div class="ft" id="drFoot"></div></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal"><button class="x" onclick="closeAll()">×</button><div id="modalBody"></div></div>
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="wrap">
+  <div class="cols">
+    <div><h5>Seven Dials</h5><p>Australian dealer in new and pre-owned luxury watches. Every piece inspected, authenticated and sold with a 24-month Seven Dials warranty.</p><p style="margin-top:8px">Level 1, 99 Queen Street<br>Melbourne VIC 3000<br>0499 005 000 · sales@sevendials.com.au</p>
+      <div class="social"><a href="#" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a><a href="#" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a><a href="#" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2c-.3-1-1-1.8-2-2C19.2 4.7 12 4.7 12 4.7s-7.2 0-9 .5c-1 .2-1.7 1-2 2C.5 9 .5 12 .5 12s0 3 .5 4.8c.3 1 1 1.8 2 2 1.8.5 9 .5 9 .5s7.2 0 9-.5c1-.2 1.7-1 2-2 .5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM9.7 15.3V8.7l6 3.3-6 3.3z"/></svg></a></div></div>
+    <div><h5>Shop</h5><a href="#new">New Arrivals</a><a href="#watches">All Watches</a><a href="#preowned">Pre-Owned</a><a href="#flash">Flash Deals</a><a href="#special">Special Offers</a><a href="#display">Display Items</a></div>
+    <div><h5>Services</h5><a href="#sell">Sell Your Watch</a><a href="#sell">Trade-In &amp; Buy-Price Guide</a><a href="#trade">Trade / Wholesale Portal</a><a href="#rewards">Dial Points Rewards</a><a href="#info-finance">Finance &amp; Afterpay</a><a href="#info-shipping">Shipping &amp; Insurance</a></div>
+    <div><h5>Company</h5><a href="#info-about">About Seven Dials</a><a href="#info-authenticity">Authenticity Guarantee</a><a href="#info-warranty">Warranty &amp; Returns</a><a href="#reviews">Customer Reviews</a><a href="#news">Market News</a><a href="#contact">Contact Us</a><a href="#info-privacy">Privacy &amp; Terms</a></div>
+  </div>
+  <div class="bot"><span>© 2026 Seven Dials Pty Ltd. All rights reserved. Second-Hand Dealer Licence SHD-0016602 (VIC). Prices in AUD include GST.</span><span>Seven Dials is an independent dealer and is not affiliated with any brand shown.</span></div>
+</div></footer>
+
+<script id="listings" type="application/json">__LISTINGS__</script>
+<script>
+/* ===================== DATA LAYER =====================
+   LISTINGS is the only data source. Replace the JSON block above
+   (or assign window.LISTINGS before this script) with the live
+   Seven Dials stock feed. Fields:
+   id, brand, family, ref, material, dial, size, condition
+   (New|Pre-Owned|Display), year, box, papers, price (AUD, null=POA),
+   was (AUD or null), flags [new-arrival|hot|special|flash], sold,
+   movement, sku, added (YYYY-MM-DD)
+======================================================= */
+const LISTINGS = window.LISTINGS || JSON.parse(document.getElementById('listings').textContent);
+const RATES = {AUD:1, USD:0.66, NZD:1.09, SGD:0.87};
+const SYM = {AUD:'A$', USD:'US$', NZD:'NZ$', SGD:'S$'};
+let CUR = 'AUD';
+const state = {cart:[], wl:[], recent:[]};
+try{Object.assign(state, JSON.parse(localStorage.getItem('sd-state')||'{}'));}catch(e){}
+function save(){try{localStorage.setItem('sd-state',JSON.stringify(state));}catch(e){}}
+const $=s=>document.querySelector(s);
+const byId=Object.fromEntries(LISTINGS.map(x=>[x.id,x]));
+const brands=[...new Set(LISTINGS.map(x=>x.brand))].sort();
+const brandCount=b=>LISTINGS.filter(x=>x.brand===b).length;
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const brandBySlug=Object.fromEntries(brands.map(b=>[slug(b),b]));
+function money(v){ if(v==null) return null; const n=Math.round(v*RATES[CUR]); return SYM[CUR]+n.toLocaleString('en-AU'); }
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+/* ===================== WATCH ART ===================== */
+const MATCOL={"Stainless Steel":["#d9dde3","#9aa3ad"],"Rose Gold":["#e9c2a8","#b8805c"],"Yellow Gold":["#efd58a","#b8963e"],"White Gold":["#e6e8ec","#a9afb8"],"Titanium":["#b9bec6","#6f757d"],"Two-Tone":["#e0d6b8","#9aa3ad"],"Ceramic":["#3a3d42","#17191c"],"Platinum":["#e4e6ea","#a3a8b0"]};
+const DIALCOL={Black:"#111318",Blue:"#16336b",Silver:"#d8dadf",Green:"#1d5a3c",White:"#f3f3f1",Slate:"#4a4f58",Chocolate:"#4a2a1a",Champagne:"#e3cc92",Grey:"#6b6f77","Ice Blue":"#bfe2f0"};
+function art(it,seed){
+  const [m1,m2]=MATCOL[it.material]||MATCOL["Stainless Steel"]; const d=DIALCOL[it.dial]||"#222";
+  const light = ["Silver","White","Champagne","Ice Blue"].includes(it.dial); const hand = light?"#222":"#eee";
+  const h=(it.ref.length*7+(seed||0))%360; const mh=(h*2)%360;
+  const idx=[...Array(12)].map((_,i)=>{const a=i*30*Math.PI/180;const r1=30,r2=35;return `<line x1="${(50+Math.sin(a)*r1).toFixed(1)}" y1="${(50-Math.cos(a)*r1).toFixed(1)}" x2="${(50+Math.sin(a)*r2).toFixed(1)}" y2="${(50-Math.cos(a)*r2).toFixed(1)}" stroke="${light?'#333':'#e8e8e8'}" stroke-width="${i%3==0?2.2:1.2}"/>`}).join('');
+  const bezel = it.family.match(/Submariner|Sea-Dweller|Diver|Aquis|Fifty|Bathyscaphe|Pelagos|Black Bay|Seascoper|Superocean|Aquatimer|Submersible|Planet|Hydro|Captain/)? `<circle cx="50" cy="50" r="41" fill="none" stroke="${it.dial==='Green'?'#14472f':it.dial==='Blue'?'#102a5c':'#1a1c20'}" stroke-width="6"/>` : it.family.match(/Daytona|Speedmaster|Navitimer|Chronomaster|Carrera/)? `<circle cx="50" cy="50" r="41" fill="none" stroke="#1a1c20" stroke-width="5"/>`:'';
+  const sub = it.family.match(/Daytona|Speedmaster|Navitimer|Chronomaster|Carrera|Monaco|Chrono/)?`<circle cx="50" cy="66" r="6" fill="none" stroke="${hand}" stroke-width="1"/><circle cx="35" cy="50" r="6" fill="none" stroke="${hand}" stroke-width="1"/><circle cx="65" cy="50" r="6" fill="none" stroke="${hand}" stroke-width="1"/>`:'';
+  const shape = it.family.match(/Tank|Reverso|Santos|Cintr|Monaco|Royal Oak|Nautilus|Laureato|Octo|Overseas|Alpine|PRX|BR 0/);
+  const u=(it.sku+'-'+(seed||0)).replace(/[^a-z0-9-]/gi,'');
+  const caseEl = shape? `<rect x="8" y="8" width="84" height="84" rx="${it.family.match(/Royal Oak|Nautilus|Laureato|Overseas|Alpine|PRX|Octo/)?'22':'8'}" fill="url(#g${u})"/>`:`<circle cx="50" cy="50" r="46" fill="url(#g${u})"/>`;
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${m1}"/><stop offset="1" stop-color="${m2}"/></linearGradient><radialGradient id="dl${u}" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="${d}" stop-opacity=".85"/><stop offset="1" stop-color="${d}"/></radialGradient></defs>
+  <rect x="38" y="0" width="24" height="100" fill="${m2}" opacity=".9"/><rect x="40" y="0" width="20" height="100" fill="${m1}" opacity=".5"/>
+  ${caseEl}<rect x="92" y="44" width="6" height="12" rx="2" fill="${m2}"/>
+  <circle cx="50" cy="50" r="38" fill="url(#dl${u})"/>${bezel}${idx}${sub}
+  <line x1="50" y1="50" x2="${(50+Math.sin(h*Math.PI/180)*20).toFixed(1)}" y2="${(50-Math.cos(h*Math.PI/180)*20).toFixed(1)}" stroke="${hand}" stroke-width="3" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="${(50+Math.sin(mh*Math.PI/180)*29).toFixed(1)}" y2="${(50-Math.cos(mh*Math.PI/180)*29).toFixed(1)}" stroke="${hand}" stroke-width="2" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="${(50+Math.sin((mh+140)*Math.PI/180)*31).toFixed(1)}" y2="${(50-Math.cos((mh+140)*Math.PI/180)*31).toFixed(1)}" stroke="${it.material.includes('Gold')?'#b8963e':'#c8102e'}" stroke-width="1"/>
+  <circle cx="50" cy="50" r="2" fill="${hand}"/></svg>`;
+}
+
+/* ===================== IMAGE (real photo with SVG fallback) ===================== */
+function pic(it,big){ if(!it.img) return art(it); const u=big&&it.imgBig?it.imgBig:it.img; return `<img src="${esc(u)}" alt="${esc(nameOf(it))}" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.outerHTML=window.__art('${it.id}')">`; }
+window.__art=id=>art(byId[id]);
+/* ===================== CARD ===================== */
+function nameOf(it){return `${it.brand} ${it.family} ${it.ref} ${it.material}`;}
+function card(it,ctx){
+  const tag = ctx==='special'||it.flags.includes('special')?'<b class="tag special">Special</b>':ctx==='flash'||it.flags.includes('flash')?'<b class="tag flash">Flash</b>':ctx==='hot'||it.flags.includes('hot')?'<b class="tag hot">Hot</b>':it.flags.includes('new-arrival')?'<b class="tag new">New In</b>':it.condition==='Pre-Owned'?'<b class="tag preowned">Pre-Owned</b>':it.condition==='Display'?'<b class="tag display">Display</b>':'';
+  const price = it.price==null?'<div class="price poa">Contact us for price</div>':`<div class="price">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}</div>`;
+  return `<a class="card" href="#item-${it.id}">${tag}${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div class="img">${pic(it)}</div><div class="body"><div class="brand">${esc(it.brand)}</div><div class="name">${esc(it.family)} ${esc(it.material)}</div><div class="ref">Ref. ${esc(it.ref)}</div><div class="meta">${[it.size?it.size+'mm':'',it.dial?esc(it.dial)+' dial':'',it.year||''].filter(Boolean).join(' · ')||(it.rrpHkd&&it.price?'Brand RRP ref. '+money(it.rrpHkd*1.10*0.185):'')}</div><span class="cond">${it.condition.toUpperCase()}${it.condition!=='New'?(it.box&&it.papers?' · FULL SET':''):''}</span>${price}</div></a>`;
+}
+function grid(items,ctx){return items.length?`<div class="grid">${items.map(i=>card(i,ctx)).join('')}</div>`:'<div class="empty">No watches match those filters.</div>';}
+
+/* ===================== HOME ===================== */
+const SLIDES=[
+ {k:'Now in stock',h:'Rolex, Patek &amp; Audemars Piguet',p:'Hard-to-get references, in hand in Melbourne. Full sets, authenticated, 24-month warranty.',b:'#watches',bt:'Shop Watches',bg:'linear-gradient(120deg,#152747,#1f3864 55%,#2b4a7e)'},
+ {k:'Flash deals',h:'Up to 20% off selected pieces',p:'Limited-time pricing on pre-owned stock. When they are gone, they are gone.',b:'#flash',bt:'View Flash Deals',bg:'linear-gradient(120deg,#3b0a1a,#7a1030 55%,#c8102e)'},
+ {k:'Sell or trade',h:'Best buy-prices in Australia',p:'Send us your reference and condition on WhatsApp for a same-day offer. Bank transfer on inspection.',b:'#sell',bt:'Get an Offer',bg:'linear-gradient(120deg,#2a2412,#6b5323 55%,#b8963e)'},
+ {k:'Dial Points',h:'Earn rewards on every purchase',p:'1 point per dollar, redeemable on servicing, straps and your next watch.',b:'#rewards',bt:'How it works',bg:'linear-gradient(120deg,#0f2a1e,#1d5a3c 55%,#2f7d4f)'}
+];
+let slideI=0,slideT;
+function home(){
+  const pickR=(arr,n,seed)=>{const a=arr.slice();let s=seed;for(let i=a.length-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a.slice(0,n);};
+  let newIn=LISTINGS.filter(x=>x.flags.includes('new-arrival')&&!x.sold).slice(0,10); if(newIn.length<10) newIn=pickR(LISTINGS.filter(x=>!x.sold&&x.price),10,11);
+  let hot=LISTINGS.filter(x=>x.flags.includes('hot')).slice(0,10); if(hot.length<10) hot=pickR(LISTINGS.filter(x=>!x.sold&&/Rolex|Patek|Audemars|Omega|Tudor|Cartier/.test(x.brand)),10,23);
+  let sp=LISTINGS.filter(x=>x.flags.includes('special')&&!x.sold).slice(0,10); if(sp.length<10) sp=pickR(LISTINGS.filter(x=>!x.sold&&x.price&&x.rrpHkd&&x.hkd<x.rrpHkd),10,37);
+  let po=LISTINGS.filter(x=>x.condition==='Pre-Owned'&&!x.sold).slice(0,5);
+  const rec=['Rolex','Patek Philippe','Audemars Piguet','Omega','Cartier','Tudor'];
+  return `
+  <div class="hero"><div class="carousel" id="car">${SLIDES.map((s,i)=>`<div class="slide ${i==0?'on':''}" style="background:${s.bg}"><div class="txt"><div class="kicker">${s.k}</div><h2>${s.h}</h2><p>${s.p}</p><a class="btn" href="${s.b}">${s.bt}</a> &nbsp; <a class="btn ghost" href="#sell">Sell your watch</a></div><div class="art">${art(LISTINGS[[0,60,120,200][i]],i*40)}</div></div>`).join('')}
+    <button class="arrow l" onclick="slide(-1)">‹</button><button class="arrow r" onclick="slide(1)">›</button><div class="dots">${SLIDES.map((_,i)=>`<b class="${i==0?'on':''}" onclick="goSlide(${i})"></b>`).join('')}</div></div></div>
+  <div class="strip">
+    <a href="#new"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.3L12 16.7l-6.2 4.5 2.4-7.3L2 9.4h7.6z"/></svg>New Arrivals<span>${LISTINGS.filter(x=>x.flags.includes('new-arrival')).length} pieces</span></a>
+    <a href="#watches"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 9v3l2 2M9 3h6M9 21h6"/></svg>All Watches<span>${LISTINGS.length} in stock</span></a>
+    <a href="#preowned"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>Pre-Owned<span>${LISTINGS.filter(x=>x.condition==='Pre-Owned').length} pieces</span></a>
+    <a href="#flash"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Flash Deals<span>Limited time</span></a>
+    <a href="#sell"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Sell / Trade-In<span>Same-day offers</span></a>
+    <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Reviews<span>4.9 ★ from 300+</span></a>
+  </div>
+  <section class="sec"><div class="sec-h"><h3>Market News</h3><small>Prices, releases and what's moving</small><a class="more" href="#news">more ›</a></div>
+    <div class="news"><div class="list">${NEWS.slice(0,5).map(n=>`<a href="#news"><time>${n.d}</time><span>${n.t}</span></a>`).join('')}</div>
+    <div><div style="background:var(--navy);color:#fff;border-radius:6px;padding:20px;height:100%"><div class="kicker" style="font-size:11px;letter-spacing:.2em;color:var(--gold-l);font-weight:700;margin-bottom:8px">BUY-PRICE GUIDE · UPDATED WEEKLY</div><h4 class="serif" style="font-size:24px;margin-bottom:10px">What we're paying this week</h4><table style="width:100%;font-size:13px;border-collapse:collapse">${BUY.map(b=>`<tr><td style="padding:5px 0;border-bottom:1px solid #2d4168">${b[0]}</td><td style="text-align:right;color:var(--gold-l);font-weight:600;border-bottom:1px solid #2d4168">${b[1]}</td></tr>`).join('')}</table><a class="btn" style="margin-top:14px" href="#sell">Get a firm offer</a></div></div></div></section>
+  <section class="sec"><div class="sec-h"><h3>Recommended Brands</h3><a class="more" href="#watches">all brands ›</a></div><div class="brands">${rec.map(b=>`<a href="#brand-${slug(b)}">${b}<span>${brandCount(b)} in stock</span></a>`).join('')}</div></section>
+  <section class="sec"><div class="sec-h"><h3>New Arrivals</h3><a class="more" href="#new">more ›</a></div>${grid(newIn)}</section>
+  <section class="sec"><div class="sec-h"><h3>Hot</h3><a class="more" href="#hot">more ›</a></div>${grid(hot,'hot')}</section>
+  <section class="sec"><div class="sec-h"><h3>Special</h3><a class="more" href="#special">more ›</a></div>${grid(sp,'special')}</section>
+  ${po.length?`<section class="sec"><div class="sec-h"><h3>Pre-Owned Picks</h3><a class="more" href="#preowned">more ›</a></div>${grid(po)}</section>`:''}
+  <section class="sec"><div class="sec-h"><h3>Pay Your Way</h3></div><div class="partners"><span>Interest-free &amp; finance partners</span><span class="p">afterpay</span><span class="p">zip</span><span class="p">PayPal</span><span class="p">Latitude</span><span class="p">humm</span><span>Bank transfer · Card · Crypto (BTC/USDT)</span></div></section>
+  <section class="sec"><div class="sec-h"><h3>Seven Dials App</h3><small>Stock alerts the moment a reference lands</small></div><div class="apps"><span>▶ Google Play</span><span> App Store</span><span>⬇ Android APK</span></div></section>`;
+}
+function slide(d){goSlide((slideI+d+SLIDES.length)%SLIDES.length);}
+function goSlide(i){slideI=i;document.querySelectorAll('.slide').forEach((s,j)=>s.classList.toggle('on',j==i));document.querySelectorAll('.dots b').forEach((s,j)=>s.classList.toggle('on',j==i));}
+const NEWS=[
+ {d:'2026-11-04',t:'Rolex secondary market firms for a third straight month; Daytona 126500LN back above RRP in Australia'},
+ {d:'2026-10-28',t:'AUD weakness lifts grey-market pricing on Swiss imports; what it means for trade-ins'},
+ {d:'2026-10-19',t:'Patek Philippe discontinues two Aquanaut references; 5167A premiums widen'},
+ {d:'2026-10-07',t:'Tudor Black Bay 58 Burgundy vs Navy: which holds value better after 12 months?'},
+ {d:'2026-09-22',t:'Authentication update: how we screen for aftermarket dials and replacement bracelets'},
+ {d:'2026-09-10',t:'Omega Speedmaster 3861 pricing settles; Moonswatch halo fades'},
+ {d:'2026-08-30',t:'Audemars Piguet 15510ST wait times stretch in Australia; pre-owned demand up'},
+];
+const BUY=[['Rolex Submariner 126610LN (full set)','from A$15,500'],['Rolex GMT-Master II 126710BLNR','from A$20,000'],['Rolex Daytona 126500LN','from A$42,000'],['Patek Nautilus 5711/1A','from A$160,000'],['AP Royal Oak 15510ST','from A$45,000'],['Omega Speedmaster 3861','from A$8,200']];
+
+/* ===================== LISTING ===================== */
+const F={brand:new Set(),material:new Set(),condition:new Set(),min:'',max:'',sort:'featured',page:1};
+function listing(opts){
+  const {title,base,crumb,fixedBrand}=opts;
+  let items=base.slice();
+  if(F.brand.size&&!fixedBrand) items=items.filter(x=>F.brand.has(x.brand));
+  if(F.material.size) items=items.filter(x=>F.material.has(x.material));
+  if(F.condition.size) items=items.filter(x=>F.condition.has(x.condition));
+  if(F.min) items=items.filter(x=>x.price!=null&&x.price>=+F.min);
+  if(F.max) items=items.filter(x=>x.price!=null&&x.price<=+F.max);
+  const s=F.sort;
+  if(s==='plow') items.sort((a,b)=>(a.price??1e12)-(b.price??1e12));
+  if(s==='phigh') items.sort((a,b)=>(b.price??-1)-(a.price??-1));
+  if(s==='newest') items.sort((a,b)=>b.added.localeCompare(a.added));
+  if(s==='brand') items.sort((a,b)=>a.brand.localeCompare(b.brand)||a.family.localeCompare(b.family));
+  const PER=20,pages=Math.max(1,Math.ceil(items.length/PER)); if(F.page>pages)F.page=pages;
+  const pageItems=items.slice((F.page-1)*PER,F.page*PER);
+  const mats=[...new Set(base.map(x=>x.material))].sort();
+  const brandsHere=[...new Set(base.map(x=>x.brand))].sort();
+  const chk=(set,v,n)=>`<label><input type="checkbox" ${set.has(v)?'checked':''} onchange="tog('${n}','${esc(v)}')">${esc(v)}<i>${base.filter(x=>x[n]===v).length}</i></label>`;
+  return `<div class="crumbs"><a href="#home">Home</a> › ${crumb}</div>
+  <div class="listing"><aside class="side">
+    ${fixedBrand?'':`<h4>Brand</h4><div class="brandlist">${brandsHere.map(b=>chk(F.brand,b,'brand')).join('')}</div>`}
+    <h4>Condition</h4>${['New','Pre-Owned','Display'].filter(c=>base.some(x=>x.condition===c)).map(c=>chk(F.condition,c,'condition')).join('')}
+    <h4>Case material</h4>${mats.map(m=>chk(F.material,m,'material')).join('')}
+    <h4>Price (AUD)</h4><div class="rng"><input type="number" placeholder="Min" value="${F.min}" onchange="F.min=this.value;F.page=1;render()"><span>–</span><input type="number" placeholder="Max" value="${F.max}" onchange="F.max=this.value;F.page=1;render()"></div>
+    <button class="clear" onclick="clearF()">Clear filters</button></aside>
+  <div><div class="toolbar"><h1>${title}</h1><span class="cnt">${items.length} watches</span>
+    <select onchange="F.sort=this.value;F.page=1;render()">${[['featured','Featured'],['newest','Newest'],['plow','Price: low to high'],['phigh','Price: high to low'],['brand','Brand A–Z']].map(([v,l])=>`<option value="${v}" ${F.sort===v?'selected':''}>${l}</option>`).join('')}</select></div>
+    ${grid(pageItems,opts.ctx)}
+    ${pages>1?`<div class="pager">${[...Array(pages)].map((_,i)=>`<button class="${F.page===i+1?'on':''}" onclick="F.page=${i+1};render();window.scrollTo(0,0)">${i+1}</button>`).join('')}</div>`:''}
+  </div></div>`;
+}
+function tog(n,v){F[n].has(v)?F[n].delete(v):F[n].add(v);F.page=1;render();}
+function clearF(){F.brand.clear();F.material.clear();F.condition.clear();F.min='';F.max='';F.page=1;render();}
+
+/* ===================== ITEM ===================== */
+function item(it){
+  state.recent=[it.id,...state.recent.filter(x=>x!==it.id)].slice(0,12);save();renderBadges();
+  const rel=LISTINGS.filter(x=>x.brand===it.brand&&x.id!==it.id&&!x.sold).slice(0,5);
+  const wa=encodeURIComponent(`Hi Seven Dials, I'm interested in ${nameOf(it)} (SKU ${it.sku}). Is it still available?`);
+  const inWl=state.wl.includes(it.id);
+  const price=it.price==null?'<div class="bigprice poa">Contact us for price</div>':`<div class="bigprice">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}<small>incl. GST &amp; import duty · ${CUR!=='AUD'?'indicative, charged in AUD':'free insured delivery Australia-wide'}</small></div>`;
+  const apt=it.price?`<div class="pay">or 4 × <b>${money(it.price/4)}</b> with afterpay / zip · finance from <b>${money(it.price/36)}</b>/mo over 36 months*</div>`:'';
+  return `<div class="crumbs"><a href="#home">Home</a> › <a href="#watches">Watches</a> › <a href="#brand-${slug(it.brand)}">${esc(it.brand)}</a> › ${esc(it.family)} ${esc(it.ref)}</div>
+  <div class="item"><div><div class="gallery">${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div id="mainArt">${pic(it,true)}</div></div>
+    ${it.img?'':`<div class="thumbs"><div class="on" onclick="swapArt(this,0)">${art(it)}</div><div onclick="swapArt(this,90)">${art(it,90)}</div><div onclick="swapArt(this,200)">${art(it,200)}</div></div>`}</div>
+  <div><div class="brand">${esc(it.brand)}</div><h1>${esc(it.family)} ${esc(it.material)}</h1><div class="ref">Ref. ${esc(it.ref)} · SKU ${it.sku}</div>
+    ${price}${apt}
+    <table class="specs">
+      <tr><td>Condition</td><td><b>${it.condition}</b>${it.condition==='Pre-Owned'?' – inspected &amp; serviced where required':it.condition==='Display'?' – unworn showroom display piece':' – unworn, factory stickers'}</td></tr>
+      ${it.year?`<tr><td>Year</td><td>${it.year}</td></tr>`:''}
+      <tr><td>Box / Papers</td><td>${it.box?'Box ✓':'Box ✗'} &nbsp; ${it.papers?'Papers ✓':'Papers ✗'}${it.box&&it.papers?' &nbsp;<span class="cond">FULL SET</span>':''}</td></tr>
+      <tr><td>Case</td><td>${esc(it.material)}${it.size?', '+it.size+'mm':''}</td></tr>
+      ${it.dial?`<tr><td>Dial</td><td>${esc(it.dial)}</td></tr>`:''}
+      ${it.movement?`<tr><td>Movement</td><td>${it.movement}</td></tr>`:''}
+      ${it.rrpHkd?`<tr><td>Brand RRP (ref.)</td><td>${money(it.rrpHkd*1.10*0.185)} <span style="color:var(--mut)">(HK list converted)</span></td></tr>`:''}
+      <tr><td>Warranty</td><td>24-month Seven Dials warranty${it.condition==='New'?' + remaining manufacturer warranty':''}</td></tr>
+      <tr><td>Location</td><td>${it.src==='vipstation'?'Partner stock, Hong Kong – insured air freight to Australia, 5–7 business days':'In stock – Melbourne showroom'}</td></tr>
+    </table>
+    <div class="cta">${it.sold?'<span class="btn" style="background:#999">Sold – enquire for similar</span>':`<button class="btn navy" onclick="addCart('${it.id}')">Add to cart</button>`}<a class="btn wa" href="https://wa.me/61499005000?text=${wa}" target="_blank" rel="noopener">Enquire on WhatsApp</a><button class="btn ghost" style="border-color:var(--navy);color:var(--navy)" onclick="togWl('${it.id}')">${inWl?'♥ In watchlist':'♡ Watchlist'}</button><button class="btn ghost" style="border-color:var(--navy);color:var(--navy)" onclick="openModal('offer','${it.id}')">Make an offer</button></div>
+    <div class="assure"><div><b>Authenticated</b>Serial-checked, movement inspected</div><div><b>Insured delivery</b>Australia-wide, signature required</div><div><b>14-day returns</b>Change of mind, unworn</div></div>
+  </div></div>
+  ${rel.length?`<section class="sec"><div class="sec-h"><h3>More from ${esc(it.brand)}</h3><a class="more" href="#brand-${slug(it.brand)}">all ${brandCount(it.brand)} ›</a></div>${grid(rel)}</section>`:''}`;
+}
+function swapArt(el,seed){const it=byId[location.hash.slice(6)];$('#mainArt').innerHTML=art(it,seed);document.querySelectorAll('.thumbs div').forEach(d=>d.classList.remove('on'));el.classList.add('on');}
+
+/* ===================== CART / WATCHLIST ===================== */
+function addCart(id){if(!state.cart.includes(id))state.cart.push(id);save();renderBadges();toast('Added to cart');openDrawer('cart');}
+function rmCart(id){state.cart=state.cart.filter(x=>x!==id);save();renderBadges();openDrawer('cart');}
+function togWl(id){state.wl.includes(id)?state.wl=state.wl.filter(x=>x!==id):state.wl.push(id);save();renderBadges();toast(state.wl.includes(id)?'Saved to watchlist':'Removed from watchlist');if(location.hash.startsWith('#item-'))render();}
+function renderBadges(){$('#cartN').textContent=state.cart.length;$('#wlN').textContent=state.wl.length;}
+function openDrawer(kind){closeAll();const ids=kind==='cart'?state.cart:kind==='wl'?state.wl:state.recent;const items=ids.map(i=>byId[i]).filter(Boolean);
+  $('#drTitle').textContent=kind==='cart'?'Your cart':kind==='wl'?'Watchlist':'Recently viewed';
+  $('#drBody').innerHTML=items.length?items.map(it=>`<div class="line"><div class="th">${art(it)}</div><div><a href="#item-${it.id}" onclick="closeAll()"><b>${esc(it.brand)} ${esc(it.family)}</b><br><span style="color:var(--mut)">${esc(it.ref)}</span><br>${it.price==null?'POA':money(it.price)}</a></div>${kind==='cart'?`<button class="rm" onclick="rmCart('${it.id}')">Remove</button>`:kind==='wl'?`<button class="rm" onclick="togWl('${it.id}');openDrawer('wl')">Remove</button>`:''}</div>`).join(''):'<p style="color:var(--mut);padding:20px 0;text-align:center">Nothing here yet.</p>';
+  const tot=items.reduce((a,b)=>a+(b.price||0),0);
+  $('#drFoot').innerHTML=kind==='cart'?`<div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px"><span>Subtotal</span><span>${money(tot)}</span></div><button class="btn navy" style="width:100%" onclick="openModal('checkout')">Checkout</button><p style="font-size:11px;color:var(--mut);margin-top:8px;text-align:center">Bank transfer, card, Afterpay, Zip or crypto. Prices held 48 hours.</p>`:'';
+  $('#drawer').classList.add('on');$('#ov').classList.add('on');}
+function closeAll(){$('#drawer').classList.remove('on');$('#ov').classList.remove('on');$('#modal').classList.remove('on');}
+function toggleCS(){$('#cs').classList.toggle('on');}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1800);}
+function openModal(kind,id){closeAll();let h='';
+  if(kind==='login')h=`<h3>Login</h3><form onsubmit="fakeSubmit(event,'Logged in (demo)')"><label>Email</label><input type="email" required><label>Password</label><input type="password" required><button class="btn navy" style="margin-top:14px;width:100%">Login</button></form><p style="font-size:12px;color:var(--mut);margin-top:10px">New here? <a href="#" onclick="openModal('register');return false" style="color:var(--navy);font-weight:600">Create an account</a> · <a href="#trade" onclick="closeAll()" style="color:var(--navy);font-weight:600">Trade portal</a></p>`;
+  if(kind==='register')h=`<h3>Create account</h3><form onsubmit="fakeSubmit(event,'Account created (demo)')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input type="tel" required><label>Password</label><input type="password" required><button class="btn navy" style="margin-top:14px;width:100%">Register &amp; earn 500 Dial Points</button></form>`;
+  if(kind==='offer'){const it=byId[id];h=`<h3>Make an offer</h3><p style="font-size:13px;color:var(--mut)">${esc(nameOf(it))}<br>Asking ${it.price?money(it.price):'POA'}</p><form onsubmit="fakeSubmit(event,'Offer sent – we reply within business hours')"><label>Your offer (AUD)</label><input type="number" required><label>Name</label><input required><label>Mobile / WhatsApp</label><input required><label>Trade-in? (optional)</label><input placeholder="e.g. Rolex 116610LN, 2019, full set"><button class="btn navy" style="margin-top:14px;width:100%">Send offer</button></form>`;}
+  if(kind==='checkout')h=`<h3>Checkout</h3><form onsubmit="fakeSubmit(event,'Order received – invoice sent to your email')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input required><label>Delivery address</label><input required placeholder="Street, suburb, state, postcode"><label>Payment</label><select><option>Bank transfer (Osko / PayID)</option><option>Credit / debit card</option><option>Afterpay</option><option>Zip</option><option>PayPal</option><option>Crypto (BTC / USDT)</option><option>Collect in showroom</option></select><button class="btn navy" style="margin-top:14px;width:100%">Place order</button></form><p style="font-size:11px;color:var(--mut);margin-top:8px">ID verification is required for orders over A$10,000 (AML/CTF).</p>`;
+  $('#modalBody').innerHTML=h;$('#modal').classList.add('on');$('#ov').classList.add('on');}
+function fakeSubmit(e,msg){e.preventDefault();closeAll();toast(msg);if(msg.startsWith('Order')){state.cart=[];save();renderBadges();}}
+function doSearch(e){e.preventDefault();location.hash='#search';render();}
+
+/* ===================== STATIC PAGES ===================== */
+function sellPage(){return `<div class="page"><h1>Sell or trade in your watch</h1><p>Send us the reference, year, condition and what's included (box, papers, links). We reply with a firm buy-price the same business day, usually within the hour on WhatsApp. Payment by bank transfer on inspection at our Melbourne showroom or by insured courier.</p>
+<h2>This week's buy-price guide</h2><table class="specs">${BUY.map(b=>`<tr><td style="width:auto">${b[0]}</td><td style="text-align:right;font-weight:600">${b[1]}</td></tr>`).join('')}</table><p style="font-size:12px;color:var(--mut)">Guide prices for complete, unpolished examples in excellent condition. Final offer after inspection.</p>
+<h2>Get an offer</h2><form class="form2" onsubmit="fakeSubmit(event,'Thanks – we will come back with an offer today')"><div><label>Brand</label><select>${brands.map(b=>`<option>${b}</option>`).join('')}<option>Other</option></select></div><div><label>Reference</label><input required placeholder="e.g. 126610LN"></div><div><label>Year</label><input></div><div><label>Condition</label><select><option>Unworn</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div><div><label>Box</label><select><option>Yes</option><option>No</option></select></div><div><label>Papers / warranty card</label><select><option>Yes</option><option>No</option></select></div><div><label>Name</label><input required></div><div><label>Mobile / WhatsApp</label><input required></div><div class="full"><label>Notes</label><textarea rows="3" placeholder="Service history, extra links, anything we should know"></textarea></div><div class="full"><button class="btn navy">Request offer</button> &nbsp; <a class="btn" style="background:#25d366" href="https://wa.me/61499005000?text=${encodeURIComponent('Hi Seven Dials, I would like a buy-price for my watch:')}" target="_blank" rel="noopener">Or WhatsApp photos</a></div></form></div>`;}
+function reviewsPage(){const R=[['James T.','Melbourne','Submariner 126610LN','Priced below everyone else I checked, full set as described, couriered to Sydney next day with insurance. Will be back for a GMT.'],['Priya S.','Brisbane','Cartier Santos','Peter sent extra photos within minutes on WhatsApp and the watch arrived exactly as shown. Easy trade-in on my old Tissot too.'],['Marcus L.','Perth','Omega Speedmaster','Honest about a small mark on the clasp that I would not have noticed. That is why I trust them.'],['Helen W.','Adelaide','Tudor BB58','Paid with Afterpay, picked it up from the Queen Street showroom. Lovely service, no pressure.'],['Daniel K.','Sydney','AP Royal Oak 15510ST','Could not get one from the boutique for love or money. Seven Dials had one in hand, papers 2026. Done in a day.'],['Sophie R.','Gold Coast','Patek Aquanaut','Verified the serial with me on a video call before I paid. Professional outfit.']];
+  return `<div class="page" style="max-width:1280px"><h1>Customer reviews</h1><p style="margin-bottom:16px">4.9 ★ average from 300+ verified purchases.</p><div class="reviews">${R.map(r=>`<div class="rev"><div class="stars">★★★★★</div><p>${r[3]}</p><small><b>${r[0]}</b>, ${r[1]} · ${r[2]}</small></div>`).join('')}</div></div>`;}
+function newsPage(){return `<div class="page"><h1>Market news</h1>${NEWS.map(n=>`<div style="padding:14px 0;border-bottom:1px solid var(--line)"><small style="color:var(--mut)">${n.d}</small><h2 style="margin:4px 0 6px;font-size:22px">${n.t}</h2><p>Weekly read on the Australian secondary market: what is moving, what is softening, and how it changes our buy-prices. Full article coming to the blog.</p></div>`).join('')}</div>`;}
+function contactPage(){return `<div class="page"><h1>Contact Seven Dials</h1><p><b>Showroom (by appointment)</b><br>Level 1, 99 Queen Street, Melbourne VIC 3000</p><p style="margin-top:8px"><b>WhatsApp / Mobile</b> 0499 005 000<br><b>Email</b> sales@sevendials.com.au<br><b>Hours</b> Mon–Sat 9:30am–6pm AEDT</p><h2>Send a message</h2><form class="form2" onsubmit="fakeSubmit(event,'Message sent – we will reply shortly')"><div><label>Name</label><input required></div><div><label>Email or mobile</label><input required></div><div class="full"><label>Message</label><textarea rows="4" maxlength="500" required></textarea></div><div class="full"><button class="btn navy">Send</button></div></form></div>`;}
+function infoPage(k){const P={
+ about:['About Seven Dials','<p>Seven Dials is a Melbourne-based dealer in new and pre-owned luxury watches, licensed as a second-hand dealer in Victoria (SHD-0016602). We buy, sell and trade across Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier, Tudor and thirty more brands, with stock held in hand rather than on consignment.</p><p>Every watch is serial-checked, inspected by our watchmaker and sold with a 24-month warranty, insured delivery and a 14-day change-of-mind return.</p>'],
+ authenticity:['Authenticity guarantee','<p>We check serial and model numbers against manufacturer records, open the caseback to confirm the movement, and inspect dial, hands, bracelet and clasp for aftermarket parts. Watches sold as full sets have matching warranty cards. If a watch is ever shown not to be genuine, we refund in full.</p>'],
+ warranty:['Warranty & returns','<p>All watches carry a 24-month Seven Dials mechanical warranty. New watches also carry the remaining manufacturer warranty. Unworn watches may be returned within 14 days for a full refund. Pre-owned watches may be returned within 14 days if not as described.</p>'],
+ finance:['Finance & Afterpay','<p>Afterpay and Zip are available on purchases up to their limits. Longer-term finance through Latitude and humm from 12 to 60 months, subject to approval. Bank transfer (Osko / PayID) and crypto (BTC / USDT) accepted with no surcharge.</p>'],
+ shipping:['Shipping & insurance','<p>Free fully insured delivery Australia-wide, signature on delivery, usually next business day from Melbourne. International shipping to NZ, Singapore and Hong Kong on request. Showroom collection by appointment.</p>'],
+ privacy:['Privacy & terms','<p>We collect only what is needed to complete your order and satisfy AML/CTF obligations. We never sell your details. Prices in AUD include GST; international customers are invoiced in AUD. Full terms available on request.</p>'],
+ trade:['Trade / wholesale portal','<p>Registered dealers get access to trade pricing, bulk stock lists and sourcing requests. Apply with your business name, ABN and dealer licence number.</p><form class="form2" onsubmit="fakeSubmit(event,\'Application received\')"><div><label>Business</label><input required></div><div><label>ABN</label><input required></div><div><label>Licence no.</label><input></div><div><label>Contact</label><input required></div><div class="full"><button class="btn navy">Apply for trade access</button></div></form>'],
+ rewards:['Dial Points rewards','<p>Earn 1 Dial Point for every dollar spent. 500 points on sign-up. Redeem 100 points = A$1 against servicing, straps, bracelets and future watch purchases. Points never expire while your account is active.</p>'],
+};const p=P[k]||P.about;return `<div class="page"><h1>${p[0]}</h1>${p[1]}</div>`;}
+
+/* ===================== ROUTER ===================== */
+function render(){
+  const h=(location.hash||'#home').slice(1); const app=$('#app'); let out='';
+  const nav=document.querySelectorAll('#mainnav a');nav.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h||(h.startsWith('brand-')&&a.getAttribute('href')==='#watches')));
+  clearInterval(slideT);
+  if(h==='home'){out=home();slideT=setInterval(()=>slide(1),5500);}
+  else if(h==='watches')out=listing({title:'All Watches',base:LISTINGS,crumb:'Watches'});
+  else if(h==='new')out=listing({title:'New Arrivals',base:LISTINGS.filter(x=>x.flags.includes('new-arrival')||x.condition==='New'),crumb:'New Arrivals'});
+  else if(h==='preowned')out=listing({title:'Pre-Owned',base:LISTINGS.filter(x=>x.condition==='Pre-Owned'),crumb:'Pre-Owned'});
+  else if(h==='hot'){let b=LISTINGS.filter(x=>x.flags.includes('hot'));if(b.length<20)b=LISTINGS.filter(x=>!x.sold&&/Rolex|Patek|Audemars|Richard Mille/.test(x.brand)&&x.price);out=listing({title:'Hot',base:b,crumb:'Hot',ctx:'hot'});}
+  else if(h==='special'){let b=LISTINGS.filter(x=>x.flags.includes('special'));if(b.length<20)b=LISTINGS.filter(x=>!x.sold&&x.price&&x.rrpHkd&&x.hkd&&x.hkd<x.rrpHkd*0.97);out=listing({title:'Special – below brand RRP',base:b,crumb:'Special',ctx:'special'});}
+  else if(h==='flash')out=listing({title:'Flash Deals',base:LISTINGS.filter(x=>x.flags.includes('flash')),crumb:'Flash Deals',ctx:'flash'});
+  else if(h==='display')out=listing({title:'Display Items',base:LISTINGS.filter(x=>x.condition==='Display'),crumb:'Display Items'});
+  else if(h.startsWith('brand-')){const b=brandBySlug[h.slice(6)];out=b?listing({title:b,base:LISTINGS.filter(x=>x.brand===b),crumb:`<a href="#watches">Watches</a> › ${b}`,fixedBrand:true}):'<div class="empty">Brand not found.</div>';}
+  else if(h.startsWith('item-')){const it=byId[h.slice(5)];out=it?item(it):'<div class="empty">Listing not found.</div>';}
+  else if(h==='search'){const q=($('#q').value||'').trim().toLowerCase();const toks=q.split(/\s+/).filter(Boolean);const base=LISTINGS.filter(x=>{const s=(nameOf(x)+' '+x.dial+' '+x.sku).toLowerCase().replace(/[.\-\/ ]/g,'');return toks.every(t=>s.includes(t.replace(/[.\-\/ ]/g,'')));});out=listing({title:`Search: “${esc(q)}”`,base,crumb:'Search'});}
+  else if(h==='sell')out=sellPage();
+  else if(h==='reviews')out=reviewsPage();
+  else if(h==='news')out=newsPage();
+  else if(h==='contact')out=contactPage();
+  else if(h==='trade')out=infoPage('trade');
+  else if(h==='rewards')out=infoPage('rewards');
+  else if(h.startsWith('info-'))out=infoPage(h.slice(5));
+  else out=home();
+  app.innerHTML=out;
+  if(state.recent.length&&!h.startsWith('item-')&&h!=='home'){const r=state.recent.map(i=>byId[i]).filter(Boolean).slice(0,5);if(r.length)app.insertAdjacentHTML('beforeend',`<section class="sec recent"><div class="sec-h"><h3>Recently viewed</h3></div>${grid(r)}</section>`);}
+}
+window.addEventListener('hashchange',()=>{if(!location.hash.startsWith('#item-'))window.scrollTo(0,0);render();});
+$('#cur').addEventListener('change',e=>{CUR=e.target.value;render();});
+/* gold bar (AUD, indicative) */
+(function(){const g=[['Gold 9999','A$/g','163.40'],['Gold 9999','A$/oz','5,082'],['Platinum','A$/g','54.10'],['Silver','A$/oz','72.6']];$('#goldbar').innerHTML=`<span>Metals today</span>`+g.map(x=>`<span>${x[0]} <b>${x[2]}</b> ${x[1]}</span>`).join('')+`<span style="opacity:.6">indicative only</span>`;})();
+/* mega menu */
+$('#megaBrands').innerHTML=brands.map(b=>`<a href="#brand-${slug(b)}">${b} <i>(${brandCount(b)})</i></a>`).join('');
+renderBadges();render();
+</script>
+</body>
+</html>
