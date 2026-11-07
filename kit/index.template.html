@@ -25,14 +25,14 @@ button{font-family:inherit;cursor:pointer}
 /* header */
 .header{background:var(--white);border-bottom:1px solid var(--line)}
 .header .wrap{display:flex;align-items:center;gap:24px;min-height:84px}
-.logo{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
 .logo .mark{width:46px;height:46px}
 .logo .word{font-family:"Cormorant Garamond",serif;font-size:26px;letter-spacing:.14em;font-weight:600;color:var(--navy);text-transform:uppercase;line-height:1}
 .logo small{display:block;font-family:Inter;font-size:9.5px;letter-spacing:.28em;color:var(--gold);font-weight:600;margin-top:3px}
 .search{flex:1;display:flex;max-width:560px}
 .search input{flex:1;border:1.5px solid var(--navy);border-right:0;padding:9px 14px;font-size:14px;border-radius:3px 0 0 3px;outline:none}
 .search button{background:var(--navy);color:#fff;border:0;padding:0 18px;border-radius:0 3px 3px 0;font-weight:600}
-.hdr-actions{margin-left:auto;display:flex;gap:22px;align-items:center}
+.hdr-actions{margin-left:auto;display:flex;gap:22px;align-items:center;flex:none}
 .hdr-actions .act{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--mut);position:relative}
 .hdr-actions .act svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.7}
 .hdr-actions .badge{position:absolute;top:-6px;right:-2px;background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:10px;padding:0 5px;min-width:16px;text-align:center}
@@ -73,7 +73,7 @@ button{font-family:inherit;cursor:pointer}
 .arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:0;width:40px;height:40px;border-radius:50%;font-size:20px;z-index:3}
 .arrow.l{left:12px}.arrow.r{right:12px}
 /* category strip */
-.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:18px auto}
+.strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:18px auto}
 .strip a{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 10px;text-align:center;font-weight:600;font-size:13px;transition:.2s}
 .strip a:hover{border-color:var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.06)}
 .strip a span{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:3px}
@@ -84,17 +84,17 @@ button{font-family:inherit;cursor:pointer}
 .sec-h h3{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
 .sec-h small{color:var(--mut);font-size:12px}
 .sec-h a.more{margin-left:auto;font-size:12.5px;color:var(--gold);font-weight:600}
-.news{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.news{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px}
 .news .list a{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
 .news .list a:hover{color:var(--navy)}
 .news .list time{color:var(--mut);font-size:12px;white-space:nowrap;min-width:84px}
-.brands{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.brands{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .brands a{border:1px solid var(--line);border-radius:6px;padding:22px 10px;text-align:center;font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;letter-spacing:.04em;color:var(--navy);background:linear-gradient(180deg,#fff,#f6f7f9)}
 .brands a:hover{border-color:var(--gold);color:var(--gold)}
 .brands a span{display:block;font-family:Inter;font-size:11px;color:var(--mut);font-weight:400;letter-spacing:0;margin-top:4px}
 /* product grid */
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.card{border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden;position:relative;transition:.2s;display:flex;flex-direction:column}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.card{min-width:0;border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden;position:relative;transition:.2s;display:flex;flex-direction:column}
 .card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1);transform:translateY(-2px);border-color:#d9dde5}
 .card .img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px}
 .card .img svg{width:100%;height:100%}
@@ -117,7 +117,7 @@ button{font-family:inherit;cursor:pointer}
 .apps{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .apps span{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600}
 /* listing page */
-.listing{display:grid;grid-template-columns:240px 1fr;gap:18px;margin:18px auto}
+.listing{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px;margin:18px auto}.listing>*{min-width:0}
 .side{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px;align-self:start;position:sticky;top:60px;max-height:calc(100vh - 80px);overflow:auto}
 .side h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:12px 0 8px;font-weight:700}
 .side h4:first-child{margin-top:0}
@@ -130,6 +130,7 @@ button{font-family:inherit;cursor:pointer}
 .toolbar{background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
 .toolbar h1{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--navy)}
 .toolbar .cnt{color:var(--mut);font-size:12.5px}
+.fbtn{display:none}
 .toolbar select{margin-left:auto;border:1px solid var(--line);border-radius:3px;padding:7px 10px;font-size:13px;background:#fff}
 .crumbs{font-size:12px;color:var(--mut);margin:14px 0 0}
 .crumbs a:hover{color:var(--navy)}
@@ -138,7 +139,7 @@ button{font-family:inherit;cursor:pointer}
 .pager button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .empty{padding:40px;text-align:center;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px}
 /* item page */
-.item{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:24px;margin:16px auto}
+.item{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:24px;margin:16px auto}
 .item .gallery{background:#f4f5f7;border-radius:6px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:34px;position:relative}
 .item .gallery svg{width:100%;height:100%}
 .thumbs{display:flex;gap:8px;margin-top:10px}
@@ -160,7 +161,7 @@ button{font-family:inherit;cursor:pointer}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
 .cta .btn{padding:13px 22px}
 .cta .btn.wa{background:#25d366}
-.assure{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.assure{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
 .assure div{border:1px solid var(--line);border-radius:4px;padding:10px;font-size:11.5px;color:var(--mut);text-align:center}
 .assure div b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px}
 .qty{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
@@ -181,7 +182,7 @@ button{font-family:inherit;cursor:pointer}
 .cs .staff small{display:block;color:var(--mut);font-size:11.5px}
 /* footer */
 .footer{background:var(--navy-d);color:#aeb8cc;margin-top:30px;font-size:12.5px}
-.footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:34px 0 22px}
+.footer .cols{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px;padding:34px 0 22px}
 .footer h5{color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;font-weight:700}
 .footer a{display:block;padding:3px 0}
 .footer a:hover{color:#fff}
@@ -216,20 +217,20 @@ button{font-family:inherit;cursor:pointer}
 .page h2{font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--navy);margin:20px 0 8px;font-weight:600}
 .page p,.page li{font-size:14px;line-height:1.7;color:#333}
 .page ul{padding-left:20px;margin:8px 0}
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .rev{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px}
 .rev .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
 .rev p{font-size:13px;margin:8px 0;line-height:1.6}
 .rev small{color:var(--mut)}
-.form2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .form2 label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px}
 .form2 input,.form2 select,.form2 textarea{width:100%;border:1px solid var(--line);border-radius:3px;padding:9px 10px;font-size:13px;font-family:inherit}
 .form2 .full{grid-column:1/-1}
 .recent{margin:18px auto}
 .hide{display:none!important}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}.brands{grid-template-columns:repeat(4,1fr)}.mega{width:720px}.mega .cols{columns:3}}
-@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.listing{grid-template-columns:1fr}.side{position:static;max-height:none}.item{grid-template-columns:1fr}.news{grid-template-columns:1fr}.strip{grid-template-columns:repeat(3,1fr)}.footer .cols{grid-template-columns:1fr 1fr}.nav ul{overflow-x:auto}.mega{display:none!important}.search{display:none}.hdr-actions .act span{display:none}.slide .art{display:none}.reviews{grid-template-columns:1fr}.form2{grid-template-columns:1fr}}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.brands{grid-template-columns:repeat(2,1fr)}.topbar .gold{display:none}}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.brands{grid-template-columns:repeat(4,minmax(0,1fr))}.mega{width:720px}.mega .cols{columns:3}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.listing{grid-template-columns:minmax(0,1fr)}.side{position:static;max-height:none;display:none}.side.open{display:block}.fbtn{display:inline-block;border:1px solid var(--navy);color:var(--navy);background:#fff;padding:7px 12px;border-radius:3px;font-weight:600;font-size:12.5px}.item{grid-template-columns:minmax(0,1fr)}.news{grid-template-columns:minmax(0,1fr)}.strip{grid-template-columns:repeat(3,minmax(0,1fr))}.footer .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.nav ul{overflow-x:auto;-webkit-overflow-scrolling:touch}.nav .more{margin-left:0}.mega{display:none!important}.search{display:none}.hdr-actions .act span{display:none}.slide .art{display:none}.reviews{grid-template-columns:minmax(0,1fr)}.form2{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){html,body{overflow-x:hidden;max-width:100vw}.wrap{padding:0 10px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.brands{grid-template-columns:repeat(2,minmax(0,1fr))}.strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.strip a{padding:12px 6px;font-size:12px}.topbar .wrap{gap:10px;font-size:11px}.topbar .right{margin-left:0;gap:10px;flex-wrap:wrap}.header .wrap{min-height:64px;gap:10px;flex-wrap:nowrap}.logo .mark{width:34px;height:34px}.logo .word{font-size:18px;letter-spacing:.1em}.logo small{display:none}.hdr-actions{gap:12px}.wa-cta{padding:8px 10px;font-size:0;gap:0}.wa-cta svg{width:20px;height:20px}.nav li>a{padding:11px 11px;font-size:12.5px}.carousel{aspect-ratio:auto;min-height:0}.slide{position:relative;padding:28px 18px 44px;display:none}.slide.on{display:flex}.slide .txt{max-width:100%}.slide h2{font-size:28px}.slide p{font-size:13px}.slide .btn{padding:9px 14px;font-size:11px;margin-bottom:6px}.arrow{width:30px;height:30px;font-size:16px}.sec{padding:12px 12px}.sec-h h3{font-size:19px}.card .name{font-size:12.5px}.card .price{font-size:14px}.card .body{padding:8px 9px 10px}.toolbar{padding:8px 10px;gap:8px}.toolbar h1{font-size:20px}.toolbar select{margin-left:0;width:100%}.side{padding:12px}.item{padding:14px;gap:16px}.item h1{font-size:24px}.item .bigprice{font-size:24px}.item .gallery{padding:16px}.cta .btn{padding:11px 14px;font-size:12px;flex:1 1 45%;text-align:center}.assure{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.assure div{padding:6px;font-size:10.5px}.specs td:first-child{width:96px}.page{padding:16px 14px}.page h1{font-size:26px}.footer .cols{grid-template-columns:minmax(0,1fr);gap:18px;padding:24px 0 14px}.footer .bot{flex-direction:column}.float{right:8px;bottom:70px;gap:6px}.float a,.float button{width:40px;height:40px}.cs{right:56px;width:min(300px,calc(100vw - 70px))}.drawer{width:100%}.modal{width:94vw}.pager button{padding:6px 9px}.partners{gap:12px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -367,7 +368,7 @@ function nameOf(it){return `${it.brand} ${it.family} ${it.ref} ${it.material}`;}
 function card(it,ctx){
   const tag = ctx==='special'||it.flags.includes('special')?'<b class="tag special">Special</b>':ctx==='flash'||it.flags.includes('flash')?'<b class="tag flash">Flash</b>':ctx==='hot'||it.flags.includes('hot')?'<b class="tag hot">Hot</b>':it.flags.includes('new-arrival')?'<b class="tag new">New In</b>':it.condition==='Pre-Owned'?'<b class="tag preowned">Pre-Owned</b>':it.condition==='Display'?'<b class="tag display">Display</b>':'';
   const price = it.price==null?'<div class="price poa">Contact us for price</div>':`<div class="price">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}</div>`;
-  return `<a class="card" href="#item-${it.id}">${tag}${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div class="img">${pic(it)}</div><div class="body"><div class="brand">${esc(it.brand)}</div><div class="name">${esc(it.family)} ${esc(it.material)}</div><div class="ref">Ref. ${esc(it.ref)}</div><div class="meta">${[it.size?it.size+'mm':'',it.dial?esc(it.dial)+' dial':'',it.year||''].filter(Boolean).join(' · ')}</div><span class="cond">${it.condition.toUpperCase()}${it.condition!=='New'?(it.box&&it.papers?' · FULL SET':''):''}</span>${price}</div></a>`;
+  return `<a class="card" href="#item-${it.id}">${tag}${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div class="img">${pic(it)}</div><div class="body"><div class="brand">${esc(it.brand)}</div><div class="name">${esc(it.family)} ${esc(it.material)}</div><div class="ref">Ref. ${esc(it.ref)}</div><div class="meta">${[it.size?it.size+'mm':'',it.dial?esc(it.dial)+' dial':'',it.year||''].filter(Boolean).join(' · ')}</div><span class="cond">${it.condition==='Enquire'?'ENQUIRE BY WHATSAPP':it.condition.toUpperCase()+(it.condition!=='New'?(it.box&&it.papers?' · FULL SET':''):'')}</span>${price}</div></a>`;
 }
 function grid(items,ctx){return items.length?`<div class="grid">${items.map(i=>card(i,ctx)).join('')}</div>`:'<div class="empty">No watches match those filters.</div>';}
 
@@ -390,9 +391,9 @@ function home(){
   <div class="hero"><div class="carousel" id="car">${SLIDES.map((s,i)=>`<div class="slide ${i==0?'on':''}" style="background:${s.bg}"><div class="txt"><div class="kicker">${s.k}</div><h2>${s.h}</h2><p>${s.p}</p><a class="btn" href="${s.b}">${s.bt}</a> &nbsp; <a class="btn ghost" href="#sell">Sell your watch</a></div><div class="art">${art(LISTINGS[[0,60,120,200][i]],i*40)}</div></div>`).join('')}
     <button class="arrow l" onclick="slide(-1)">‹</button><button class="arrow r" onclick="slide(1)">›</button><div class="dots">${SLIDES.map((_,i)=>`<b class="${i==0?'on':''}" onclick="goSlide(${i})"></b>`).join('')}</div></div></div>
   <div class="strip">
-    <a href="#new"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.3L12 16.7l-6.2 4.5 2.4-7.3L2 9.4h7.6z"/></svg>New Arrivals<span>${LISTINGS.filter(x=>x.flags.includes('new-arrival')).length} pieces</span></a>
+    <a href="#new"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.3L12 16.7l-6.2 4.5 2.4-7.3L2 9.4h7.6z"/></svg>New Arrivals<span>Latest stock</span></a>
     <a href="#watches"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 9v3l2 2M9 3h6M9 21h6"/></svg>All Watches<span>${LISTINGS.length} in stock</span></a>
-    <a href="#preowned"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>Pre-Owned<span>${LISTINGS.filter(x=>x.condition==='Pre-Owned').length} pieces</span></a>
+    <a href="#preowned"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>Pre-Owned<span>Enquire for availability</span></a>
     <a href="#flash"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Flash Deals<span>Limited time</span></a>
     <a href="#sell"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Sell / Trade-In<span>Same-day offers</span></a>
     <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Reviews<span>Verified buyers</span></a>
@@ -438,13 +439,13 @@ function listing(opts){
   const brandsHere=[...new Set(base.map(x=>x.brand))].sort();
   const chk=(set,v,n)=>`<label><input type="checkbox" ${set.has(v)?'checked':''} onchange="tog('${n}','${esc(v)}')">${esc(v)}<i>${base.filter(x=>x[n]===v).length}</i></label>`;
   return `<div class="crumbs"><a href="#home">Home</a> › ${crumb}</div>
-  <div class="listing"><aside class="side">
+  <div class="listing"><aside class="side ${(F.brand.size||F.material.size||F.condition.size||F.min||F.max)?'open':''}">
     ${fixedBrand?'':`<h4>Brand</h4><div class="brandlist">${brandsHere.map(b=>chk(F.brand,b,'brand')).join('')}</div>`}
-    <h4>Condition</h4>${['New','Pre-Owned','Display'].filter(c=>base.some(x=>x.condition===c)).map(c=>chk(F.condition,c,'condition')).join('')}
+    <h4>Condition</h4>${['New','Enquire','Pre-Owned','Display'].filter(c=>base.some(x=>x.condition===c)).map(c=>chk(F.condition,c,'condition')).join('')}
     <h4>Case material</h4>${mats.map(m=>chk(F.material,m,'material')).join('')}
     <h4>Price (AUD)</h4><div class="rng"><input type="number" placeholder="Min" value="${F.min}" onchange="F.min=this.value;F.page=1;render()"><span>–</span><input type="number" placeholder="Max" value="${F.max}" onchange="F.max=this.value;F.page=1;render()"></div>
     <button class="clear" onclick="clearF()">Clear filters</button></aside>
-  <div><div class="toolbar"><h1>${title}</h1><span class="cnt">${items.length} watches</span>
+  <div><div class="toolbar"><h1>${title}</h1><span class="cnt">${items.length} watches</span><button class="fbtn" onclick="document.querySelector('.side').classList.toggle('open');this.textContent=document.querySelector('.side').classList.contains('open')?'Hide filters':'Filters'">Filters</button>
     <select onchange="F.sort=this.value;F.page=1;render()">${[['featured','Featured'],['newest','Newest'],['plow','Price: low to high'],['phigh','Price: high to low'],['brand','Brand A–Z']].map(([v,l])=>`<option value="${v}" ${F.sort===v?'selected':''}>${l}</option>`).join('')}</select></div>
     ${grid(pageItems,opts.ctx)}
     ${pages>1?`<div class="pager">${[...Array(pages)].map((_,i)=>`<button class="${F.page===i+1?'on':''}" onclick="F.page=${i+1};render();window.scrollTo(0,0)">${i+1}</button>`).join('')}</div>`:''}
@@ -467,7 +468,7 @@ function item(it){
   <div><div class="brand">${esc(it.brand)}</div><h1>${esc(it.family)} ${esc(it.material)}</h1><div class="ref">Ref. ${esc(it.ref)} · SKU ${it.sku}</div>
     ${price}${apt}
     <table class="specs">
-      <tr><td>Condition</td><td><b>${it.condition==='New'?'Brand new, unworn':it.condition}</b></td></tr>
+      <tr><td>Condition</td><td><b>${it.condition==='New'?'Brand new, unworn':it.condition==='Enquire'?'Enquire by WhatsApp':it.condition}</b></td></tr>
       ${it.year?`<tr><td>Year</td><td>${it.year}</td></tr>`:''}
       <tr><td>Box / Papers</td><td>${it.box&&it.papers?'Original box, international warranty card and manual':(it.box?'Box ✓':'Box ✗')+' &nbsp; '+(it.papers?'Papers ✓':'Papers ✗')}</td></tr>
       <tr><td>Case</td><td>${esc(it.material)}${it.size?', '+it.size+'mm':''}</td></tr>

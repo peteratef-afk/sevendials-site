@@ -56,7 +56,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         big=re.sub(r'\.jpg_\d+x\d+\.jpg','.jpg',img)
         if r.get('NO_ISSTOCK')==0: continue
         items.append({"id":re.sub(r'[^a-z0-9]+','-',(slug+'-'+code).lower()).strip('-'),"brand":brand,"family":family,"ref":code,"material":mat,
-          "dial":"","size":"","condition":"New","year":"","box":True,"papers":True,
+          "dial":"","size":"","condition":("Enquire" if brand=="Patek Philippe" else "New"),"year":"","box":True,"papers":True,
           "price":price,"was":was,"hkd":hkd,"rrpHkd":src,"flags":flags,"sold":(r.get('NO_ISSTOCK')==0),
           "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","added":"2026-11-07"})
 json.dump(items,open('listings_vip.json','w'),ensure_ascii=False)
