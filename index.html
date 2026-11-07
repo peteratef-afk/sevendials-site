@@ -236,12 +236,9 @@ button{font-family:inherit;cursor:pointer}
 
 <!-- TOP BAR -->
 <div class="topbar"><div class="wrap">
-  <div class="gold" id="goldbar"></div>
   <div class="right">
     <span>Currency</span>
     <select id="cur"><option value="AUD">AUD $</option><option value="USD">USD $</option><option value="NZD">NZD $</option><option value="SGD">SGD $</option></select>
-    <a href="#rewards">Dial Points</a>
-    <a href="#trade">Trade Portal</a>
     <a href="#account" onclick="openModal('login');return false">Login</a>
     <a href="#account" onclick="openModal('register');return false">Register</a>
   </div>
@@ -257,7 +254,7 @@ button{font-family:inherit;cursor:pointer}
   <div class="hdr-actions">
     <a class="act" href="#watchlist" onclick="openDrawer('wl');return false"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Watchlist</span><b class="badge" id="wlN">0</b></a>
     <a class="act" href="#cart" onclick="openDrawer('cart');return false"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span>Cart</span><b class="badge" id="cartN">0</b></a>
-    <a class="wa-cta" href="https://wa.me/61499005000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>WhatsApp 0499 005 000</a>
+    <a class="wa-cta" href="https://wa.me/61499005000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>WhatsApp +61 499 005 000</a>
   </div>
 </div></header>
 
@@ -273,7 +270,6 @@ button{font-family:inherit;cursor:pointer}
   <li><a href="#display">Display Items</a></li>
   <li><a href="#sell">Sell Your Watch</a></li>
   <li><a href="#reviews">Customer Reviews</a></li>
-  <li><a href="#news">Market News</a></li>
   <li class="more"><a href="#contact">Contact</a></li>
 </ul></div></nav>
 
@@ -288,7 +284,7 @@ button{font-family:inherit;cursor:pointer}
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Top">▲</button>
 </div>
 <div class="cs" id="cs"><div class="hd">Customer Service <button onclick="toggleCS()">×</button></div><div class="bd">
-  <div class="staff"><div class="av">P</div><div><b>Peter</b> · Watches<small>WhatsApp 0499 005 000</small><small>Mon–Sat 9:30am–6pm AEDT</small></div></div>
+  <div class="staff"><div class="av">P</div><div><b>Peter</b> · Watches<small>WhatsApp +61 499 005 000</small><small>Mon–Sat 9:30am–6pm AEDT</small></div></div>
   <div class="staff"><div class="av">M</div><div><b>Mina</b> · Sourcing &amp; Trade<small>sales@sevendials.com.au</small><small>Mon–Fri 9:30am–5:30pm AEDT</small></div></div>
   <p style="margin-top:10px;color:var(--mut);font-size:12px">Showroom by appointment: Level 1, 99 Queen Street, Melbourne VIC 3000</p>
 </div></div>
@@ -304,11 +300,11 @@ button{font-family:inherit;cursor:pointer}
 <!-- FOOTER -->
 <footer class="footer"><div class="wrap">
   <div class="cols">
-    <div><h5>Seven Dials</h5><p>Australian dealer in new and pre-owned luxury watches. Every piece inspected, authenticated and sold with a 24-month Seven Dials warranty.</p><p style="margin-top:8px">Level 1, 99 Queen Street<br>Melbourne VIC 3000<br>0499 005 000 · sales@sevendials.com.au</p>
+    <div><h5>Seven Dials</h5><p>Australian dealer in new and pre-owned luxury watches. Every piece inspected and authenticated. Remaining manufacturer&#39;s warranty plus 7-day Seven Dials warranty.</p><p style="margin-top:8px">Level 1, 99 Queen Street<br>Melbourne VIC 3000<br>+61 499 005 000 · sales@sevendials.com.au</p>
       <div class="social"><a href="#" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a><a href="#" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a><a href="#" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2c-.3-1-1-1.8-2-2C19.2 4.7 12 4.7 12 4.7s-7.2 0-9 .5c-1 .2-1.7 1-2 2C.5 9 .5 12 .5 12s0 3 .5 4.8c.3 1 1 1.8 2 2 1.8.5 9 .5 9 .5s7.2 0 9-.5c1-.2 1.7-1 2-2 .5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM9.7 15.3V8.7l6 3.3-6 3.3z"/></svg></a></div></div>
     <div><h5>Shop</h5><a href="#new">New Arrivals</a><a href="#watches">All Watches</a><a href="#preowned">Pre-Owned</a><a href="#flash">Flash Deals</a><a href="#special">Special Offers</a><a href="#display">Display Items</a></div>
-    <div><h5>Services</h5><a href="#sell">Sell Your Watch</a><a href="#sell">Trade-In &amp; Buy-Price Guide</a><a href="#trade">Trade / Wholesale Portal</a><a href="#rewards">Dial Points Rewards</a><a href="#info-finance">Finance &amp; Afterpay</a><a href="#info-shipping">Shipping &amp; Insurance</a></div>
-    <div><h5>Company</h5><a href="#info-about">About Seven Dials</a><a href="#info-authenticity">Authenticity Guarantee</a><a href="#info-warranty">Warranty &amp; Returns</a><a href="#reviews">Customer Reviews</a><a href="#news">Market News</a><a href="#contact">Contact Us</a><a href="#info-privacy">Privacy &amp; Terms</a></div>
+    <div><h5>Services</h5><a href="#sell">Sell Your Watch</a><a href="#sell">Trade-In &amp; Buy-Price Guide</a><a href="#info-shipping">Shipping &amp; Insurance</a></div>
+    <div><h5>Company</h5><a href="#info-about">About Seven Dials</a><a href="#info-authenticity">Authenticity Guarantee</a><a href="#info-warranty">Warranty &amp; Returns</a><a href="#reviews">Customer Reviews</a><a href="#contact">Contact Us</a><a href="#info-privacy">Privacy &amp; Terms</a></div>
   </div>
   <div class="bot"><span>© 2026 Seven Dials Pty Ltd. All rights reserved. Second-Hand Dealer Licence SHD-0016602 (VIC). Prices in AUD include GST.</span><span>Seven Dials is an independent dealer and is not affiliated with any brand shown.</span></div>
 </div></footer>
@@ -364,23 +360,23 @@ function art(it,seed){
 }
 
 /* ===================== IMAGE (real photo with SVG fallback) ===================== */
-function pic(it,big){ if(!it.img) return art(it); const u=big&&it.imgBig?it.imgBig:it.img; return `<img src="${esc(u)}" alt="${esc(nameOf(it))}" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="this.outerHTML=window.__art('${it.id}')">`; }
+function pic(it,big){ if(!it.img) return art(it); const u=big&&it.imgBig?it.imgBig:it.img; const fb=big&&it.imgBig&&it.imgBig!==it.img?`this.onerror=function(){this.outerHTML=window.__art('${it.id}')};this.src='${esc(it.img)}'`:`this.outerHTML=window.__art('${it.id}')`; return `<img src="${esc(u)}" alt="${esc(nameOf(it))}" loading="lazy" style="width:100%;height:100%;object-fit:contain" onerror="${fb}">`; }
 window.__art=id=>art(byId[id]);
 /* ===================== CARD ===================== */
 function nameOf(it){return `${it.brand} ${it.family} ${it.ref} ${it.material}`;}
 function card(it,ctx){
   const tag = ctx==='special'||it.flags.includes('special')?'<b class="tag special">Special</b>':ctx==='flash'||it.flags.includes('flash')?'<b class="tag flash">Flash</b>':ctx==='hot'||it.flags.includes('hot')?'<b class="tag hot">Hot</b>':it.flags.includes('new-arrival')?'<b class="tag new">New In</b>':it.condition==='Pre-Owned'?'<b class="tag preowned">Pre-Owned</b>':it.condition==='Display'?'<b class="tag display">Display</b>':'';
   const price = it.price==null?'<div class="price poa">Contact us for price</div>':`<div class="price">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}</div>`;
-  return `<a class="card" href="#item-${it.id}">${tag}${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div class="img">${pic(it)}</div><div class="body"><div class="brand">${esc(it.brand)}</div><div class="name">${esc(it.family)} ${esc(it.material)}</div><div class="ref">Ref. ${esc(it.ref)}</div><div class="meta">${[it.size?it.size+'mm':'',it.dial?esc(it.dial)+' dial':'',it.year||''].filter(Boolean).join(' · ')||(it.rrpHkd&&it.price?'Brand RRP ref. '+money(it.rrpHkd*1.10*0.185):'')}</div><span class="cond">${it.condition.toUpperCase()}${it.condition!=='New'?(it.box&&it.papers?' · FULL SET':''):''}</span>${price}</div></a>`;
+  return `<a class="card" href="#item-${it.id}">${tag}${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div class="img">${pic(it)}</div><div class="body"><div class="brand">${esc(it.brand)}</div><div class="name">${esc(it.family)} ${esc(it.material)}</div><div class="ref">Ref. ${esc(it.ref)}</div><div class="meta">${[it.size?it.size+'mm':'',it.dial?esc(it.dial)+' dial':'',it.year||''].filter(Boolean).join(' · ')}</div><span class="cond">${it.condition.toUpperCase()}${it.condition!=='New'?(it.box&&it.papers?' · FULL SET':''):''}</span>${price}</div></a>`;
 }
 function grid(items,ctx){return items.length?`<div class="grid">${items.map(i=>card(i,ctx)).join('')}</div>`:'<div class="empty">No watches match those filters.</div>';}
 
 /* ===================== HOME ===================== */
 const SLIDES=[
- {k:'Now in stock',h:'Rolex, Patek &amp; Audemars Piguet',p:'Hard-to-get references, in hand in Melbourne. Full sets, authenticated, 24-month warranty.',b:'#watches',bt:'Shop Watches',bg:'linear-gradient(120deg,#152747,#1f3864 55%,#2b4a7e)'},
+ {k:'Now in stock',h:'Rolex, Patek &amp; Audemars Piguet',p:'Hard-to-get references, authenticated, full sets. Enquire on WhatsApp for availability.',b:'#watches',bt:'Shop Watches',bg:'linear-gradient(120deg,#152747,#1f3864 55%,#2b4a7e)'},
  {k:'Flash deals',h:'Up to 20% off selected pieces',p:'Limited-time pricing on pre-owned stock. When they are gone, they are gone.',b:'#flash',bt:'View Flash Deals',bg:'linear-gradient(120deg,#3b0a1a,#7a1030 55%,#c8102e)'},
  {k:'Sell or trade',h:'Best buy-prices in Australia',p:'Send us your reference and condition on WhatsApp for a same-day offer. Bank transfer on inspection.',b:'#sell',bt:'Get an Offer',bg:'linear-gradient(120deg,#2a2412,#6b5323 55%,#b8963e)'},
- {k:'Dial Points',h:'Earn rewards on every purchase',p:'1 point per dollar, redeemable on servicing, straps and your next watch.',b:'#rewards',bt:'How it works',bg:'linear-gradient(120deg,#0f2a1e,#1d5a3c 55%,#2f7d4f)'}
+ {k:'Credit card accepted',h:'Simple, direct buying',p:'Message us the reference, we confirm availability and send an invoice. Insured delivery in 5 to 7 business days.',b:'#contact',bt:'Contact us',bg:'linear-gradient(120deg,#0f2a1e,#1d5a3c 55%,#2f7d4f)'}
 ];
 let slideI=0,slideT;
 function home(){
@@ -399,18 +395,14 @@ function home(){
     <a href="#preowned"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>Pre-Owned<span>${LISTINGS.filter(x=>x.condition==='Pre-Owned').length} pieces</span></a>
     <a href="#flash"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Flash Deals<span>Limited time</span></a>
     <a href="#sell"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Sell / Trade-In<span>Same-day offers</span></a>
-    <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Reviews<span>4.9 ★ from 300+</span></a>
+    <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Reviews<span>Verified buyers</span></a>
   </div>
-  <section class="sec"><div class="sec-h"><h3>Market News</h3><small>Prices, releases and what's moving</small><a class="more" href="#news">more ›</a></div>
-    <div class="news"><div class="list">${NEWS.slice(0,5).map(n=>`<a href="#news"><time>${n.d}</time><span>${n.t}</span></a>`).join('')}</div>
-    <div><div style="background:var(--navy);color:#fff;border-radius:6px;padding:20px;height:100%"><div class="kicker" style="font-size:11px;letter-spacing:.2em;color:var(--gold-l);font-weight:700;margin-bottom:8px">BUY-PRICE GUIDE · UPDATED WEEKLY</div><h4 class="serif" style="font-size:24px;margin-bottom:10px">What we're paying this week</h4><table style="width:100%;font-size:13px;border-collapse:collapse">${BUY.map(b=>`<tr><td style="padding:5px 0;border-bottom:1px solid #2d4168">${b[0]}</td><td style="text-align:right;color:var(--gold-l);font-weight:600;border-bottom:1px solid #2d4168">${b[1]}</td></tr>`).join('')}</table><a class="btn" style="margin-top:14px" href="#sell">Get a firm offer</a></div></div></div></section>
   <section class="sec"><div class="sec-h"><h3>Recommended Brands</h3><a class="more" href="#watches">all brands ›</a></div><div class="brands">${rec.map(b=>`<a href="#brand-${slug(b)}">${b}<span>${brandCount(b)} in stock</span></a>`).join('')}</div></section>
   <section class="sec"><div class="sec-h"><h3>New Arrivals</h3><a class="more" href="#new">more ›</a></div>${grid(newIn)}</section>
   <section class="sec"><div class="sec-h"><h3>Hot</h3><a class="more" href="#hot">more ›</a></div>${grid(hot,'hot')}</section>
   <section class="sec"><div class="sec-h"><h3>Special</h3><a class="more" href="#special">more ›</a></div>${grid(sp,'special')}</section>
   ${po.length?`<section class="sec"><div class="sec-h"><h3>Pre-Owned Picks</h3><a class="more" href="#preowned">more ›</a></div>${grid(po)}</section>`:''}
-  <section class="sec"><div class="sec-h"><h3>Pay Your Way</h3></div><div class="partners"><span>Interest-free &amp; finance partners</span><span class="p">afterpay</span><span class="p">zip</span><span class="p">PayPal</span><span class="p">Latitude</span><span class="p">humm</span><span>Bank transfer · Card · Crypto (BTC/USDT)</span></div></section>
-  <section class="sec"><div class="sec-h"><h3>Seven Dials App</h3><small>Stock alerts the moment a reference lands</small></div><div class="apps"><span>▶ Google Play</span><span> App Store</span><span>⬇ Android APK</span></div></section>`;
+  <section class="sec"><div class="sec-h"><h3>How to Buy</h3></div><div class="partners"><span>Enquire on WhatsApp +61 499 005 000 · we confirm availability and send an invoice · pay by credit card · insured delivery Australia-wide in 5 to 7 business days</span></div></section>`;
 }
 function slide(d){goSlide((slideI+d+SLIDES.length)%SLIDES.length);}
 function goSlide(i){slideI=i;document.querySelectorAll('.slide').forEach((s,j)=>s.classList.toggle('on',j==i));document.querySelectorAll('.dots b').forEach((s,j)=>s.classList.toggle('on',j==i));}
@@ -467,26 +459,25 @@ function item(it){
   const rel=LISTINGS.filter(x=>x.brand===it.brand&&x.id!==it.id&&!x.sold).slice(0,5);
   const wa=encodeURIComponent(`Hi Seven Dials, I'm interested in ${nameOf(it)} (SKU ${it.sku}). Is it still available?`);
   const inWl=state.wl.includes(it.id);
-  const price=it.price==null?'<div class="bigprice poa">Contact us for price</div>':`<div class="bigprice">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}<small>incl. GST &amp; import duty · ${CUR!=='AUD'?'indicative, charged in AUD':'free insured delivery Australia-wide'}</small></div>`;
-  const apt=it.price?`<div class="pay">or 4 × <b>${money(it.price/4)}</b> with afterpay / zip · finance from <b>${money(it.price/36)}</b>/mo over 36 months*</div>`:'';
+  const price=it.price==null?'<div class="bigprice poa">Contact us for price</div>':`<div class="bigprice">${it.was?`<s>${money(it.was)}</s>`:''}${money(it.price)}<small>incl. GST, plus shipping Australia-wide${CUR!=='AUD'?' · indicative, charged in AUD':''}</small></div>`;
+  const apt=`<div class="pay">Payment by credit card on invoice · insured delivery Australia-wide, 5 to 7 business days</div>`;
   return `<div class="crumbs"><a href="#home">Home</a> › <a href="#watches">Watches</a> › <a href="#brand-${slug(it.brand)}">${esc(it.brand)}</a> › ${esc(it.family)} ${esc(it.ref)}</div>
   <div class="item"><div><div class="gallery">${it.sold?'<div class="sold"><span>SOLD</span></div>':''}<div id="mainArt">${pic(it,true)}</div></div>
     ${it.img?'':`<div class="thumbs"><div class="on" onclick="swapArt(this,0)">${art(it)}</div><div onclick="swapArt(this,90)">${art(it,90)}</div><div onclick="swapArt(this,200)">${art(it,200)}</div></div>`}</div>
   <div><div class="brand">${esc(it.brand)}</div><h1>${esc(it.family)} ${esc(it.material)}</h1><div class="ref">Ref. ${esc(it.ref)} · SKU ${it.sku}</div>
     ${price}${apt}
     <table class="specs">
-      <tr><td>Condition</td><td><b>${it.condition}</b>${it.condition==='Pre-Owned'?' – inspected &amp; serviced where required':it.condition==='Display'?' – unworn showroom display piece':' – unworn, factory stickers'}</td></tr>
+      <tr><td>Condition</td><td><b>${it.condition==='New'?'Brand new, unworn':it.condition}</b></td></tr>
       ${it.year?`<tr><td>Year</td><td>${it.year}</td></tr>`:''}
-      <tr><td>Box / Papers</td><td>${it.box?'Box ✓':'Box ✗'} &nbsp; ${it.papers?'Papers ✓':'Papers ✗'}${it.box&&it.papers?' &nbsp;<span class="cond">FULL SET</span>':''}</td></tr>
+      <tr><td>Box / Papers</td><td>${it.box&&it.papers?'Original box, international warranty card and manual':(it.box?'Box ✓':'Box ✗')+' &nbsp; '+(it.papers?'Papers ✓':'Papers ✗')}</td></tr>
       <tr><td>Case</td><td>${esc(it.material)}${it.size?', '+it.size+'mm':''}</td></tr>
       ${it.dial?`<tr><td>Dial</td><td>${esc(it.dial)}</td></tr>`:''}
       ${it.movement?`<tr><td>Movement</td><td>${it.movement}</td></tr>`:''}
-      ${it.rrpHkd?`<tr><td>Brand RRP (ref.)</td><td>${money(it.rrpHkd*1.10*0.185)} <span style="color:var(--mut)">(HK list converted)</span></td></tr>`:''}
-      <tr><td>Warranty</td><td>24-month Seven Dials warranty${it.condition==='New'?' + remaining manufacturer warranty':''}</td></tr>
-      <tr><td>Location</td><td>${it.src==='vipstation'?'Partner stock, Hong Kong – insured air freight to Australia, 5–7 business days':'In stock – Melbourne showroom'}</td></tr>
+      <tr><td>Warranty</td><td>Remaining manufacturer's warranty plus 7-day Seven Dials warranty</td></tr>
+      <tr><td>Delivery</td><td>5 to 7 business days, insured, Australia-wide (shipping charged at cost)</td></tr>
     </table>
     <div class="cta">${it.sold?'<span class="btn" style="background:#999">Sold – enquire for similar</span>':`<button class="btn navy" onclick="addCart('${it.id}')">Add to cart</button>`}<a class="btn wa" href="https://wa.me/61499005000?text=${wa}" target="_blank" rel="noopener">Enquire on WhatsApp</a><button class="btn ghost" style="border-color:var(--navy);color:var(--navy)" onclick="togWl('${it.id}')">${inWl?'♥ In watchlist':'♡ Watchlist'}</button><button class="btn ghost" style="border-color:var(--navy);color:var(--navy)" onclick="openModal('offer','${it.id}')">Make an offer</button></div>
-    <div class="assure"><div><b>Authenticated</b>Serial-checked, movement inspected</div><div><b>Insured delivery</b>Australia-wide, signature required</div><div><b>14-day returns</b>Change of mind, unworn</div></div>
+    <div class="assure"><div><b>Authenticated</b>Serial-checked, movement inspected</div><div><b>Insured delivery</b>Australia-wide, signature required</div><div><b>Licensed dealer</b>Second-Hand Dealer Licence SHD-0016602</div></div>
   </div></div>
   ${rel.length?`<section class="sec"><div class="sec-h"><h3>More from ${esc(it.brand)}</h3><a class="more" href="#brand-${slug(it.brand)}">all ${brandCount(it.brand)} ›</a></div>${grid(rel)}</section>`:''}`;
 }
@@ -501,37 +492,34 @@ function openDrawer(kind){closeAll();const ids=kind==='cart'?state.cart:kind==='
   $('#drTitle').textContent=kind==='cart'?'Your cart':kind==='wl'?'Watchlist':'Recently viewed';
   $('#drBody').innerHTML=items.length?items.map(it=>`<div class="line"><div class="th">${art(it)}</div><div><a href="#item-${it.id}" onclick="closeAll()"><b>${esc(it.brand)} ${esc(it.family)}</b><br><span style="color:var(--mut)">${esc(it.ref)}</span><br>${it.price==null?'POA':money(it.price)}</a></div>${kind==='cart'?`<button class="rm" onclick="rmCart('${it.id}')">Remove</button>`:kind==='wl'?`<button class="rm" onclick="togWl('${it.id}');openDrawer('wl')">Remove</button>`:''}</div>`).join(''):'<p style="color:var(--mut);padding:20px 0;text-align:center">Nothing here yet.</p>';
   const tot=items.reduce((a,b)=>a+(b.price||0),0);
-  $('#drFoot').innerHTML=kind==='cart'?`<div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px"><span>Subtotal</span><span>${money(tot)}</span></div><button class="btn navy" style="width:100%" onclick="openModal('checkout')">Checkout</button><p style="font-size:11px;color:var(--mut);margin-top:8px;text-align:center">Bank transfer, card, Afterpay, Zip or crypto. Prices held 48 hours.</p>`:'';
+  $('#drFoot').innerHTML=kind==='cart'?`<div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px"><span>Subtotal</span><span>${money(tot)}</span></div><button class="btn navy" style="width:100%" onclick="openModal('checkout')">Checkout</button><p style="font-size:11px;color:var(--mut);margin-top:8px;text-align:center">We confirm availability and send an invoice. Payment by credit card. Shipping Australia-wide charged at cost.</p>`:'';
   $('#drawer').classList.add('on');$('#ov').classList.add('on');}
 function closeAll(){$('#drawer').classList.remove('on');$('#ov').classList.remove('on');$('#modal').classList.remove('on');}
 function toggleCS(){$('#cs').classList.toggle('on');}
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1800);}
 function openModal(kind,id){closeAll();let h='';
   if(kind==='login')h=`<h3>Login</h3><form onsubmit="fakeSubmit(event,'Logged in (demo)')"><label>Email</label><input type="email" required><label>Password</label><input type="password" required><button class="btn navy" style="margin-top:14px;width:100%">Login</button></form><p style="font-size:12px;color:var(--mut);margin-top:10px">New here? <a href="#" onclick="openModal('register');return false" style="color:var(--navy);font-weight:600">Create an account</a> · <a href="#trade" onclick="closeAll()" style="color:var(--navy);font-weight:600">Trade portal</a></p>`;
-  if(kind==='register')h=`<h3>Create account</h3><form onsubmit="fakeSubmit(event,'Account created (demo)')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input type="tel" required><label>Password</label><input type="password" required><button class="btn navy" style="margin-top:14px;width:100%">Register &amp; earn 500 Dial Points</button></form>`;
+  if(kind==='register')h=`<h3>Create account</h3><form onsubmit="fakeSubmit(event,'Account created (demo)')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input type="tel" required><label>Password</label><input type="password" required><button class="btn navy" style="margin-top:14px;width:100%">Register</button></form>`;
   if(kind==='offer'){const it=byId[id];h=`<h3>Make an offer</h3><p style="font-size:13px;color:var(--mut)">${esc(nameOf(it))}<br>Asking ${it.price?money(it.price):'POA'}</p><form onsubmit="fakeSubmit(event,'Offer sent – we reply within business hours')"><label>Your offer (AUD)</label><input type="number" required><label>Name</label><input required><label>Mobile / WhatsApp</label><input required><label>Trade-in? (optional)</label><input placeholder="e.g. Rolex 116610LN, 2019, full set"><button class="btn navy" style="margin-top:14px;width:100%">Send offer</button></form>`;}
-  if(kind==='checkout')h=`<h3>Checkout</h3><form onsubmit="fakeSubmit(event,'Order received – invoice sent to your email')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input required><label>Delivery address</label><input required placeholder="Street, suburb, state, postcode"><label>Payment</label><select><option>Bank transfer (Osko / PayID)</option><option>Credit / debit card</option><option>Afterpay</option><option>Zip</option><option>PayPal</option><option>Crypto (BTC / USDT)</option><option>Collect in showroom</option></select><button class="btn navy" style="margin-top:14px;width:100%">Place order</button></form><p style="font-size:11px;color:var(--mut);margin-top:8px">ID verification is required for orders over A$10,000 (AML/CTF).</p>`;
+  if(kind==='checkout')h=`<h3>Checkout</h3><form onsubmit="fakeSubmit(event,'Request received – we will confirm availability and send your invoice')"><label>Name</label><input required><label>Email</label><input type="email" required><label>Mobile</label><input required><label>Delivery address</label><input required placeholder="Street, suburb, state, postcode"><label>Payment</label><select><option>Credit card (invoice sent on confirmation)</option></select><button class="btn navy" style="margin-top:14px;width:100%">Request invoice</button></form><p style="font-size:11px;color:var(--mut);margin-top:8px">ID verification is required for orders over A$10,000 (AML/CTF).</p>`;
   $('#modalBody').innerHTML=h;$('#modal').classList.add('on');$('#ov').classList.add('on');}
 function fakeSubmit(e,msg){e.preventDefault();closeAll();toast(msg);if(msg.startsWith('Order')){state.cart=[];save();renderBadges();}}
 function doSearch(e){e.preventDefault();location.hash='#search';render();}
 
 /* ===================== STATIC PAGES ===================== */
 function sellPage(){return `<div class="page"><h1>Sell or trade in your watch</h1><p>Send us the reference, year, condition and what's included (box, papers, links). We reply with a firm buy-price the same business day, usually within the hour on WhatsApp. Payment by bank transfer on inspection at our Melbourne showroom or by insured courier.</p>
-<h2>This week's buy-price guide</h2><table class="specs">${BUY.map(b=>`<tr><td style="width:auto">${b[0]}</td><td style="text-align:right;font-weight:600">${b[1]}</td></tr>`).join('')}</table><p style="font-size:12px;color:var(--mut)">Guide prices for complete, unpolished examples in excellent condition. Final offer after inspection.</p>
 <h2>Get an offer</h2><form class="form2" onsubmit="fakeSubmit(event,'Thanks – we will come back with an offer today')"><div><label>Brand</label><select>${brands.map(b=>`<option>${b}</option>`).join('')}<option>Other</option></select></div><div><label>Reference</label><input required placeholder="e.g. 126610LN"></div><div><label>Year</label><input></div><div><label>Condition</label><select><option>Unworn</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div><div><label>Box</label><select><option>Yes</option><option>No</option></select></div><div><label>Papers / warranty card</label><select><option>Yes</option><option>No</option></select></div><div><label>Name</label><input required></div><div><label>Mobile / WhatsApp</label><input required></div><div class="full"><label>Notes</label><textarea rows="3" placeholder="Service history, extra links, anything we should know"></textarea></div><div class="full"><button class="btn navy">Request offer</button> &nbsp; <a class="btn" style="background:#25d366" href="https://wa.me/61499005000?text=${encodeURIComponent('Hi Seven Dials, I would like a buy-price for my watch:')}" target="_blank" rel="noopener">Or WhatsApp photos</a></div></form></div>`;}
-function reviewsPage(){const R=[['James T.','Melbourne','Submariner 126610LN','Priced below everyone else I checked, full set as described, couriered to Sydney next day with insurance. Will be back for a GMT.'],['Priya S.','Brisbane','Cartier Santos','Peter sent extra photos within minutes on WhatsApp and the watch arrived exactly as shown. Easy trade-in on my old Tissot too.'],['Marcus L.','Perth','Omega Speedmaster','Honest about a small mark on the clasp that I would not have noticed. That is why I trust them.'],['Helen W.','Adelaide','Tudor BB58','Paid with Afterpay, picked it up from the Queen Street showroom. Lovely service, no pressure.'],['Daniel K.','Sydney','AP Royal Oak 15510ST','Could not get one from the boutique for love or money. Seven Dials had one in hand, papers 2026. Done in a day.'],['Sophie R.','Gold Coast','Patek Aquanaut','Verified the serial with me on a video call before I paid. Professional outfit.']];
-  return `<div class="page" style="max-width:1280px"><h1>Customer reviews</h1><p style="margin-bottom:16px">4.9 ★ average from 300+ verified purchases.</p><div class="reviews">${R.map(r=>`<div class="rev"><div class="stars">★★★★★</div><p>${r[3]}</p><small><b>${r[0]}</b>, ${r[1]} · ${r[2]}</small></div>`).join('')}</div></div>`;}
+function reviewsPage(){return `<div class="page"><h1>Customer reviews</h1><p>We are a new storefront and publish only verified reviews from completed purchases. If you have bought from Seven Dials, send us a line on WhatsApp +61 499 005 000 and we will add your review here with your permission.</p></div>`;}
 function newsPage(){return `<div class="page"><h1>Market news</h1>${NEWS.map(n=>`<div style="padding:14px 0;border-bottom:1px solid var(--line)"><small style="color:var(--mut)">${n.d}</small><h2 style="margin:4px 0 6px;font-size:22px">${n.t}</h2><p>Weekly read on the Australian secondary market: what is moving, what is softening, and how it changes our buy-prices. Full article coming to the blog.</p></div>`).join('')}</div>`;}
-function contactPage(){return `<div class="page"><h1>Contact Seven Dials</h1><p><b>Showroom (by appointment)</b><br>Level 1, 99 Queen Street, Melbourne VIC 3000</p><p style="margin-top:8px"><b>WhatsApp / Mobile</b> 0499 005 000<br><b>Email</b> sales@sevendials.com.au<br><b>Hours</b> Mon–Sat 9:30am–6pm AEDT</p><h2>Send a message</h2><form class="form2" onsubmit="fakeSubmit(event,'Message sent – we will reply shortly')"><div><label>Name</label><input required></div><div><label>Email or mobile</label><input required></div><div class="full"><label>Message</label><textarea rows="4" maxlength="500" required></textarea></div><div class="full"><button class="btn navy">Send</button></div></form></div>`;}
+function contactPage(){return `<div class="page"><h1>Contact Seven Dials</h1><p><b>Showroom (by appointment)</b><br>Level 1, 99 Queen Street, Melbourne VIC 3000</p><p style="margin-top:8px"><b>WhatsApp / Mobile</b> +61 499 005 000<br><b>Email</b> sales@sevendials.com.au<br><b>Hours</b> Mon–Sat 9:30am–6pm AEDT</p><h2>Send a message</h2><form class="form2" onsubmit="fakeSubmit(event,'Message sent – we will reply shortly')"><div><label>Name</label><input required></div><div><label>Email or mobile</label><input required></div><div class="full"><label>Message</label><textarea rows="4" maxlength="500" required></textarea></div><div class="full"><button class="btn navy">Send</button></div></form></div>`;}
 function infoPage(k){const P={
- about:['About Seven Dials','<p>Seven Dials is a Melbourne-based dealer in new and pre-owned luxury watches, licensed as a second-hand dealer in Victoria (SHD-0016602). We buy, sell and trade across Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier, Tudor and thirty more brands, with stock held in hand rather than on consignment.</p><p>Every watch is serial-checked, inspected by our watchmaker and sold with a 24-month warranty, insured delivery and a 14-day change-of-mind return.</p>'],
+ about:['About Seven Dials','<p>Seven Dials is a Melbourne-based dealer in new and pre-owned luxury watches, licensed as a second-hand dealer in Victoria (SHD-0016602). We buy, sell and trade across Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier, Tudor and thirty more brands.</p><p>Every watch is serial-checked and sold with the remaining manufacturer&#39;s warranty plus a 7-day Seven Dials warranty, and insured delivery Australia-wide.</p>'],
  authenticity:['Authenticity guarantee','<p>We check serial and model numbers against manufacturer records, open the caseback to confirm the movement, and inspect dial, hands, bracelet and clasp for aftermarket parts. Watches sold as full sets have matching warranty cards. If a watch is ever shown not to be genuine, we refund in full.</p>'],
- warranty:['Warranty & returns','<p>All watches carry a 24-month Seven Dials mechanical warranty. New watches also carry the remaining manufacturer warranty. Unworn watches may be returned within 14 days for a full refund. Pre-owned watches may be returned within 14 days if not as described.</p>'],
- finance:['Finance & Afterpay','<p>Afterpay and Zip are available on purchases up to their limits. Longer-term finance through Latitude and humm from 12 to 60 months, subject to approval. Bank transfer (Osko / PayID) and crypto (BTC / USDT) accepted with no surcharge.</p>'],
- shipping:['Shipping & insurance','<p>Free fully insured delivery Australia-wide, signature on delivery, usually next business day from Melbourne. International shipping to NZ, Singapore and Hong Kong on request. Showroom collection by appointment.</p>'],
+ warranty:['Warranty','<p>Every watch carries the remaining manufacturer&#39;s warranty plus a 7-day Seven Dials warranty from delivery.</p>'],
+ finance:['Payment','<p>Enquire on WhatsApp and we confirm availability and send an invoice. Payment is by credit card. Shipping Australia-wide is charged at cost.</p>'],
+ shipping:['Shipping & insurance','<p>Fully insured delivery Australia-wide, signature on delivery, 5 to 7 business days. Shipping is charged at cost and shown on your invoice.</p>'],
  privacy:['Privacy & terms','<p>We collect only what is needed to complete your order and satisfy AML/CTF obligations. We never sell your details. Prices in AUD include GST; international customers are invoiced in AUD. Full terms available on request.</p>'],
  trade:['Trade / wholesale portal','<p>Registered dealers get access to trade pricing, bulk stock lists and sourcing requests. Apply with your business name, ABN and dealer licence number.</p><form class="form2" onsubmit="fakeSubmit(event,\'Application received\')"><div><label>Business</label><input required></div><div><label>ABN</label><input required></div><div><label>Licence no.</label><input></div><div><label>Contact</label><input required></div><div class="full"><button class="btn navy">Apply for trade access</button></div></form>'],
- rewards:['Dial Points rewards','<p>Earn 1 Dial Point for every dollar spent. 500 points on sign-up. Redeem 100 points = A$1 against servicing, straps, bracelets and future watch purchases. Points never expire while your account is active.</p>'],
 };const p=P[k]||P.about;return `<div class="page"><h1>${p[0]}</h1>${p[1]}</div>`;}
 
 /* ===================== ROUTER ===================== */
@@ -552,10 +540,8 @@ function render(){
   else if(h==='search'){const q=($('#q').value||'').trim().toLowerCase();const toks=q.split(/\s+/).filter(Boolean);const base=LISTINGS.filter(x=>{const s=(nameOf(x)+' '+x.dial+' '+x.sku).toLowerCase().replace(/[.\-\/ ]/g,'');return toks.every(t=>s.includes(t.replace(/[.\-\/ ]/g,'')));});out=listing({title:`Search: “${esc(q)}”`,base,crumb:'Search'});}
   else if(h==='sell')out=sellPage();
   else if(h==='reviews')out=reviewsPage();
-  else if(h==='news')out=newsPage();
   else if(h==='contact')out=contactPage();
   else if(h==='trade')out=infoPage('trade');
-  else if(h==='rewards')out=infoPage('rewards');
   else if(h.startsWith('info-'))out=infoPage(h.slice(5));
   else out=home();
   app.innerHTML=out;
@@ -563,8 +549,6 @@ function render(){
 }
 window.addEventListener('hashchange',()=>{if(!location.hash.startsWith('#item-'))window.scrollTo(0,0);render();});
 $('#cur').addEventListener('change',e=>{CUR=e.target.value;render();});
-/* gold bar (AUD, indicative) */
-(function(){const g=[['Gold 9999','A$/g','163.40'],['Gold 9999','A$/oz','5,082'],['Platinum','A$/g','54.10'],['Silver','A$/oz','72.6']];$('#goldbar').innerHTML=`<span>Metals today</span>`+g.map(x=>`<span>${x[0]} <b>${x[2]}</b> ${x[1]}</span>`).join('')+`<span style="opacity:.6">indicative only</span>`;})();
 /* mega menu */
 $('#megaBrands').innerHTML=brands.map(b=>`<a href="#brand-${slug(b)}">${b} <i>(${brandCount(b)})</i></a>`).join('');
 renderBadges();render();
