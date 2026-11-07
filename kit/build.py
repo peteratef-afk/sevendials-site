@@ -38,7 +38,14 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         family=' '.join(fam).strip() or 'Watch'
         family=re.sub(r'\b(Leather|Rubber|Canvas|Nato|Satin|Strap|Ls|Cs|Rs)\b','',family,flags=re.I).strip() or family
         hkd=r.get('NO_PRICE'); tl=r.get('NO_TL_PRICE'); src=r.get('NO_SOURCEPRICE')
-        def conv(v): return None if not v else int(round(v*MARKUP*GST*HKD_AUD/10.0)*10)
+        def clean_up(ex):
+            import math
+            step=100 if ex<2000 else (500 if ex<10000 else 1000)
+            return int(math.ceil(ex/step)*step)
+        def conv(v):
+            if not v: return None
+            ex=clean_up(v*MARKUP*HKD_AUD)      # ex-GST, rounded UP to a clean number
+            return int(round(ex*GST))          # incl. GST (ex x 1.10)
         price=conv(hkd); was=None; flags=[]
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
         lab=(r.get('ST_LABEL') or '').lower()
