@@ -265,7 +265,6 @@ button{font-family:inherit;cursor:pointer}
   <li><a href="#new">New Arrivals</a></li>
   <li><a href="#watches">Watches</a><div class="mega"><h4>Featured Brands</h4><div class="cols" id="megaBrands"></div></div></li>
   <li><a href="#preowned">Pre-Owned</a></li>
-  <li><a href="#flash" class="hl">Flash Deals</a></li>
   <li><a href="#hot">Hot</a></li>
   <li><a href="#special">Special</a></li>
   <li><a href="#display">Display Items</a></li>
@@ -303,7 +302,7 @@ button{font-family:inherit;cursor:pointer}
   <div class="cols">
     <div><h5>Seven Dials</h5><p>Australian dealer in new and pre-owned luxury watches. Every piece inspected and authenticated. Remaining manufacturer&#39;s warranty.</p><p style="margin-top:8px">Level 1, 99 Queen Street<br>Melbourne VIC 3000<br>+61 499 005 000 · sales@sevendials.com.au</p>
       <div class="social"><a href="#" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a><a href="#" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a><a href="#" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2c-.3-1-1-1.8-2-2C19.2 4.7 12 4.7 12 4.7s-7.2 0-9 .5c-1 .2-1.7 1-2 2C.5 9 .5 12 .5 12s0 3 .5 4.8c.3 1 1 1.8 2 2 1.8.5 9 .5 9 .5s7.2 0 9-.5c1-.2 1.7-1 2-2 .5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM9.7 15.3V8.7l6 3.3-6 3.3z"/></svg></a></div></div>
-    <div><h5>Shop</h5><a href="#new">New Arrivals</a><a href="#watches">All Watches</a><a href="#preowned">Pre-Owned</a><a href="#flash">Flash Deals</a><a href="#special">Special Offers</a><a href="#display">Display Items</a></div>
+    <div><h5>Shop</h5><a href="#new">New Arrivals</a><a href="#watches">All Watches</a><a href="#preowned">Pre-Owned</a><a href="#special">Special Offers</a><a href="#display">Display Items</a></div>
     <div><h5>Services</h5><a href="#sell">Sell Your Watch</a><a href="#sell">Trade-In &amp; Buy-Price Guide</a><a href="#info-shipping">Shipping &amp; Insurance</a></div>
     <div><h5>Company</h5><a href="#info-about">About Seven Dials</a><a href="#info-authenticity">Authenticity Guarantee</a><a href="#info-warranty">Warranty &amp; Returns</a><a href="#reviews">Customer Reviews</a><a href="#contact">Contact Us</a><a href="#info-privacy">Privacy &amp; Terms</a></div>
   </div>
@@ -375,7 +374,6 @@ function grid(items,ctx){return items.length?`<div class="grid">${items.map(i=>c
 /* ===================== HOME ===================== */
 const SLIDES=[
  {k:'Now in stock',h:'Rolex, Patek &amp; Audemars Piguet',p:'Hard-to-get references, authenticated, full sets. Enquire on WhatsApp for availability.',b:'#watches',bt:'Shop Watches',bg:'linear-gradient(120deg,#152747,#1f3864 55%,#2b4a7e)'},
- {k:'Flash deals',h:'Up to 20% off selected pieces',p:'Limited-time pricing on pre-owned stock. When they are gone, they are gone.',b:'#flash',bt:'View Flash Deals',bg:'linear-gradient(120deg,#3b0a1a,#7a1030 55%,#c8102e)'},
  {k:'Sell or trade',h:'Best buy-prices in Australia',p:'Send us your reference and condition on WhatsApp for a same-day offer. Bank transfer on inspection.',b:'#sell',bt:'Get an Offer',bg:'linear-gradient(120deg,#2a2412,#6b5323 55%,#b8963e)'},
  {k:'Credit card accepted',h:'Simple, direct buying',p:'Message us the reference, we confirm availability and send an invoice. Insured delivery in 5 to 7 business days.',b:'#contact',bt:'Contact us',bg:'linear-gradient(120deg,#0f2a1e,#1d5a3c 55%,#2f7d4f)'}
 ];
@@ -394,14 +392,14 @@ function home(){
     <a href="#new"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.3L12 16.7l-6.2 4.5 2.4-7.3L2 9.4h7.6z"/></svg>New Arrivals<span>Latest stock</span></a>
     <a href="#watches"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 9v3l2 2M9 3h6M9 21h6"/></svg>All Watches<span>${LISTINGS.length} in stock</span></a>
     <a href="#preowned"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>Pre-Owned<span>Enquire for availability</span></a>
-    <a href="#flash"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Flash Deals<span>Limited time</span></a>
+    ${LISTINGS.some(x=>x.flags.includes('flash'))?`<a href="#flash"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Flash Deals<span>Limited time</span></a>`:`<a href="#contact"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Contact<span>WhatsApp or email</span></a>`}
     <a href="#sell"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Sell / Trade-In<span>Same-day offers</span></a>
     <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>Reviews<span>Verified buyers</span></a>
   </div>
   <section class="sec"><div class="sec-h"><h3>Recommended Brands</h3><a class="more" href="#watches">all brands ›</a></div><div class="brands">${rec.map(b=>`<a href="#brand-${slug(b)}">${b}<span>${brandCount(b)} in stock</span></a>`).join('')}</div></section>
   <section class="sec"><div class="sec-h"><h3>New Arrivals</h3><a class="more" href="#new">more ›</a></div>${grid(newIn)}</section>
   <section class="sec"><div class="sec-h"><h3>Hot</h3><a class="more" href="#hot">more ›</a></div>${grid(hot,'hot')}</section>
-  <section class="sec"><div class="sec-h"><h3>Special</h3><a class="more" href="#special">more ›</a></div>${grid(sp,'special')}</section>
+  ${sp.length?`<section class="sec"><div class="sec-h"><h3>Special</h3><a class="more" href="#special">more ›</a></div>${grid(sp,'special')}</section>`:''}
   ${po.length?`<section class="sec"><div class="sec-h"><h3>Pre-Owned Picks</h3><a class="more" href="#preowned">more ›</a></div>${grid(po)}</section>`:''}
   <section class="sec"><div class="sec-h"><h3>How to Buy</h3></div><div class="partners"><span>Enquire on WhatsApp +61 499 005 000 · we confirm availability and send an invoice · pay by credit card · insured delivery Australia-wide in 5 to 7 business days</span></div></section>`;
 }
@@ -557,6 +555,7 @@ function render(){
 window.addEventListener('hashchange',()=>{if(!location.hash.startsWith('#item-'))window.scrollTo(0,0);render();});
 $('#cur').addEventListener('change',e=>{CUR=e.target.value;render();});
 /* mega menu */
+if(LISTINGS.some(x=>x.flags.includes('flash'))){const li=document.createElement('li');li.innerHTML='<a href="#flash" class="hl">Flash Deals</a>';const ul=$('#mainnav');ul.insertBefore(li,ul.children[4]);}
 $('#megaBrands').innerHTML=brands.map(b=>`<a href="#brand-${slug(b)}">${b} <i>(${brandCount(b)})</i></a>`).join('');
 renderBadges();render();
 </script>
