@@ -55,13 +55,13 @@ button{font-family:inherit;cursor:pointer}
 .nav .more{margin-left:auto}
 /* hero */
 .hero{margin:18px auto 0}
-.carousel{position:relative;overflow:hidden;border-radius:6px;background:var(--navy);aspect-ratio:1280/420;min-height:220px}
+.carousel{position:relative;overflow:hidden;border-radius:6px;background:var(--navy);aspect-ratio:1280/420;min-height:220px;width:100%;max-width:100%;box-sizing:border-box}
 .slide{position:absolute;inset:0;display:flex;align-items:center;padding:0 7%;opacity:0;transition:opacity .7s;color:#fff}
 .slide.on{opacity:1}
-.slide .txt{max-width:560px;position:relative;z-index:2}
+.slide .txt{max-width:560px;min-width:0;position:relative;z-index:2}
 .slide .kicker{font-size:12px;letter-spacing:.3em;color:var(--gold-l);text-transform:uppercase;font-weight:600;margin-bottom:10px}
 .slide h2{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,4.2vw,56px);line-height:1.05;font-weight:600;margin-bottom:14px}
-.slide p{font-size:15px;color:#d7dde9;margin-bottom:22px;max-width:460px}
+.slide p{font-size:15px;color:#d7dde9;margin-bottom:22px;max-width:min(460px,100%)}
 .btn{display:inline-block;background:var(--gold);color:#fff;padding:11px 22px;border-radius:3px;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:0}
 .btn.ghost{background:transparent;border:1.5px solid #fff}
 .btn.navy{background:var(--navy)}
@@ -134,7 +134,7 @@ button{font-family:inherit;cursor:pointer}
 .toolbar select{margin-left:auto;border:1px solid var(--line);border-radius:3px;padding:7px 10px;font-size:13px;background:#fff}
 .crumbs{font-size:12px;color:var(--mut);margin:14px 0 0}
 .crumbs a:hover{color:var(--navy)}
-.pager{display:flex;gap:6px;justify-content:center;margin:18px 0}
+.pager{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin:18px 0}.pager .gap{color:var(--mut);padding:0 2px}
 .pager button{border:1px solid var(--line);background:#fff;padding:7px 12px;border-radius:3px;font-size:13px}
 .pager button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .empty{padding:40px;text-align:center;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px}
@@ -404,6 +404,7 @@ function home(){
   <section class="sec"><div class="sec-h"><h3>How to Buy</h3></div><div class="partners"><span>Enquire on WhatsApp +61 499 005 000 · we confirm availability and send an invoice · pay by credit card · insured delivery Australia-wide in 5 to 7 business days</span></div></section>`;
 }
 function slide(d){goSlide((slideI+d+SLIDES.length)%SLIDES.length);}
+function pagerBtns(cur,pages){const set=new Set([1,2,pages-1,pages]);for(let k=cur-2;k<=cur+2;k++)set.add(k);const ks=[...set].filter(k=>k>=1&&k<=pages).sort((a,b)=>a-b);let out='';if(cur>1)out+=`<button onclick="F.page=${cur-1};render();window.scrollTo(0,0)" aria-label="Previous">&lsaquo;</button>`;let prev=0;for(const k of ks){if(k-prev>1)out+='<span class="gap">…</span>';out+=`<button class="${cur===k?'on':''}" onclick="F.page=${k};render();window.scrollTo(0,0)">${k}</button>`;prev=k;}if(cur<pages)out+=`<button onclick="F.page=${cur+1};render();window.scrollTo(0,0)" aria-label="Next">&rsaquo;</button>`;return out;}
 function goSlide(i){slideI=i;document.querySelectorAll('.slide').forEach((s,j)=>s.classList.toggle('on',j==i));document.querySelectorAll('.dots b').forEach((s,j)=>s.classList.toggle('on',j==i));}
 const NEWS=[
  {d:'2026-11-04',t:'Rolex secondary market firms for a third straight month; Daytona 126500LN back above RRP in Australia'},
@@ -446,7 +447,7 @@ function listing(opts){
   <div><div class="toolbar"><h1>${title}</h1><span class="cnt">${items.length} watches</span><button class="fbtn" onclick="document.querySelector('.side').classList.toggle('open');this.textContent=document.querySelector('.side').classList.contains('open')?'Hide filters':'Filters'">Filters</button>
     <select onchange="F.sort=this.value;F.page=1;render()">${[['featured','Featured'],['newest','Newest'],['plow','Price: low to high'],['phigh','Price: high to low'],['brand','Brand A–Z']].map(([v,l])=>`<option value="${v}" ${F.sort===v?'selected':''}>${l}</option>`).join('')}</select></div>
     ${grid(pageItems,opts.ctx)}
-    ${pages>1?`<div class="pager">${[...Array(pages)].map((_,i)=>`<button class="${F.page===i+1?'on':''}" onclick="F.page=${i+1};render();window.scrollTo(0,0)">${i+1}</button>`).join('')}</div>`:''}
+    ${pages>1?`<div class="pager">${pagerBtns(F.page,pages)}</div>`:''}
   </div></div>`;
 }
 function tog(n,v){F[n].has(v)?F[n].delete(v):F[n].add(v);F.page=1;render();}
