@@ -369,7 +369,7 @@ select option{background:#121214;color:#f3f1ec}
     <div><h5>Services</h5><a href="#sell">Sell Your Watch</a><a href="#sell">Trade-In &amp; Buy-Price Guide</a><a href="#info-shipping">Shipping &amp; Insurance</a></div>
     <div><h5>Company</h5><a href="#info-about">About Seven Dials</a><a href="#info-authenticity">Authenticity Guarantee</a><a href="#info-warranty">Warranty &amp; Returns</a><a href="#reviews">Customer Reviews</a><a href="#contact">Contact Us</a><a href="#info-privacy">Privacy &amp; Terms</a></div>
   </div>
-  <div class="bot"><span>© 2026 Seven Dials Pty Ltd. All rights reserved. Second-Hand Dealer Licence SHD-0016602 (VIC). Prices in AUD include GST.</span><span>Seven Dials is an independent dealer and is not affiliated with any brand shown.</span></div>
+  <div class="bot"><span>© 2026 Seven Dials Pty Ltd. All rights reserved. Second-Hand Dealer Licence SHD-0016602 (VIC). Prices in AUD include GST and follow the live HKD/AUD rate (<span id="fxNote">updated hourly</span>).</span><span>Seven Dials is an independent dealer and is not affiliated with any brand shown.</span></div>
 </div></footer>
 
 <script id="listings" type="application/json">__LISTINGS__</script>
@@ -384,6 +384,14 @@ select option{background:#121214;color:#f3f1ec}
    movement, sku, added (YYYY-MM-DD)
 ======================================================= */
 const LISTINGS = window.LISTINGS || JSON.parse(document.getElementById('listings').textContent);
+/* ---- live pricing: VIP HKD x FX(HKD->AUD) x 1.02, ex-GST rounded UP to a clean figure, then +10% GST ---- */
+const PRICING={markup:1.02,gst:1.10,fallbackRate:0.185};
+let FX={rate:PRICING.fallbackRate,date:null};
+function cleanUp(ex){const step=ex<2000?100:(ex<10000?500:1000);return Math.ceil(ex/step)*step;}
+function priceFromHkd(h,rate){if(!h)return null;return Math.round(cleanUp(h*rate*PRICING.markup)*PRICING.gst);}
+function applyFx(rate,date){FX={rate,date};LISTINGS.forEach(it=>{if(it.hkd){const p=priceFromHkd(it.hkd,rate);if(it.was!=null&&it.price!=null){it.was=p;}else it.price=p;}});}
+applyFx(PRICING.fallbackRate,null);
+fetch('fx.json?t='+Math.floor(Date.now()/600000)).then(r=>r.ok?r.json():null).then(j=>{const r=j&&j.rates&&j.rates.AUD;if(r&&r>0.1&&r<0.3){applyFx(r,j.date||null);render();}}).catch(()=>{});
 const RATES = {AUD:1, USD:0.66, NZD:1.09, SGD:0.87};
 const SYM = {AUD:'A$', USD:'US$', NZD:'NZ$', SGD:'S$'};
 let CUR = 'AUD';
@@ -605,6 +613,7 @@ function infoPage(k){const P={
 
 /* ===================== ROUTER ===================== */
 function render(){
+  const fn=document.getElementById('fxNote');if(fn)fn.textContent=FX.date?`rate ${FX.rate.toFixed(4)} as at ${FX.date}`:'updated hourly';
   const h=(location.hash||'#home').slice(1); const app=$('#app'); let out='';
   const nav=document.querySelectorAll('#mainnav a');nav.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h||(h.startsWith('brand-')&&a.getAttribute('href')==='#watches')));
   clearInterval(slideT);

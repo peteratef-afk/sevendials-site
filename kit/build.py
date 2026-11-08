@@ -1,9 +1,8 @@
 import json,glob,re,os,sys
-HKD_AUD=0.185; MARKUP=1.08; GST=1.10
+HKD_AUD=0.185; MARKUP=1.02; GST=1.10   # 8 Nov 2026: Peter set margin to 2% over VIP; live FX applied in the browser from /fx.json
 SHEET_MARGIN=1.10   # margin over WhatsApp dealer asking price (brand-new listings, lowest in last 30 days)
 SHEET_EXCLUDE={'Rolex','Patek Philippe','Audemars Piguet','Richard Mille'}   # these stay on VIP pricing
-try: SHEET=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'sheet_prices.json')))
-except Exception: SHEET={}
+SHEET={}   # sheet-based pricing switched off 8 Nov 2026 (all brands priced from VIP HKD + 2%)
 def sheet_match(n):
     n=n.upper()
     if n in SHEET: return SHEET[n]
