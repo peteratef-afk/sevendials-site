@@ -105,13 +105,13 @@ img{display:block;max-width:100%}
 .cb-hero__cta{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
 .cb-hero__strip{margin-top:auto;padding-top:48px}
 .cb-hero__panel{position:relative;background:var(--cb-bottle);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--cb-on-dark)}
-.cb-hero__seal{position:absolute;width:760px;height:760px;right:-253px;top:50%;transform:translateY(-50%);opacity:.5}
+.cb-hero__seal{position:absolute;width:min(620px,86%);aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.6}
 .cb-hero__tile{position:relative;width:300px;height:380px;background:var(--cb-chalk);display:flex;flex-direction:column;padding:18px}
 .cb-hero__tile .ph{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
 .cb-hero__tile img{max-height:100%;object-fit:contain;mix-blend-mode:multiply}
 .cb-hero__tile .cb-mono-sm{color:var(--cb-stone);margin-top:10px}
 .cb-hero__sealed{position:absolute;left:32px;bottom:28px;font-family:var(--cb-font-display);font-style:italic;font-size:20px;color:var(--cb-straw)}
-@media (max-width:900px){.cb-hero{grid-template-columns:1fr;min-height:0}.cb-hero__copy{padding:48px var(--cb-gutter) 32px}.cb-hero__panel{height:420px}.cb-hero__seal{width:520px;height:520px;right:-200px;top:-120px;transform:none}.cb-hero__tile{width:240px;height:300px}.cb-hero h1{margin-bottom:24px}}
+@media (max-width:900px){.cb-hero{grid-template-columns:1fr;min-height:0}.cb-hero__copy{padding:48px var(--cb-gutter) 32px}.cb-hero__panel{height:420px}.cb-hero__seal{width:340px;height:340px}.cb-hero__tile{width:240px;height:300px}.cb-hero h1{margin-bottom:24px}}
 
 /* ledger */
 .cb-ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--cb-line)}
@@ -672,7 +672,7 @@ function cbSealDate(d){d=d||new Date();return String(d.getDate()).padStart(2,'0'
 function cbThin(n){return Number(n).toLocaleString('en-AU').replace(/,/g,'\u2009');}
 const CB_SEAL_SMALL='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#cbsmall"/></svg>';
 function cbSeal(onDark,num,date){const rim=onDark?'var(--cb-straw)':'var(--cb-bottle)',ink=onDark?'var(--cb-on-dark)':'var(--cb-bottle)';
-  return `<svg viewBox="0 0 200 200" fill="none" stroke="${ink}" role="img" aria-label="Caseback seal"><defs><path id="cbrim${onDark?1:0}" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" stroke-width="1.4"/><circle cx="100" cy="100" r="90" stroke-width="0.5"/><text font-family="Cormorant Garamond, serif" font-size="13.2" letter-spacing="3.6" font-weight="500" fill="${rim}" stroke="none"><textPath href="#cbrim${onDark?1:0}">INSPECTED · AUTHENTICATED · WARRANTED · CASEBACK DOWN UNDER ·</textPath></text><g transform="translate(38 38) scale(.62)" color="${ink}"><use href="#cbmark"/></g></svg>`;}
+  return `<svg viewBox="0 0 200 200" fill="none" stroke="${ink}" role="img" aria-label="Caseback seal"><defs><path id="cbrim${onDark?1:0}" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" stroke-width="1.4"/><circle cx="100" cy="100" r="90" stroke-width="0.5"/><text font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="1" font-weight="500" fill="${rim}" stroke="none"><textPath href="#cbrim${onDark?1:0}" textLength="458" lengthAdjust="spacing">INSPECTED · AUTHENTICATED · WARRANTED · CASEBACK DOWN UNDER ·</textPath></text><g transform="translate(38 38) scale(.62)" color="${ink}"><use href="#cbmark"/></g></svg>`;}
 function cbFam(it){let f=(it.family||'').replace(/\bIi\b/g,'II').replace(/\bIii\b/g,'III').replace(/\bGmt\b/g,'GMT').replace(/\s+/g,' ').trim();
   if(!f||/^watch$/i.test(f)||f.length>34) return it.ref;
   const m=(it.ref||'').match(/^(\d{4,6})/); if(m&&!f.includes(m[1])) f+=' '+m[1];
@@ -716,7 +716,6 @@ function home(){
     </div>
     <div class="cb-hero__panel">
       <div class="cb-hero__seal">${cbSeal(true)}</div>
-      <a class="cb-hero__tile" href="#item-${ft.id}"><div class="ph"><img src="${esc(ft.imgBig||ft.img)}" alt="${esc(ft.brand+' '+cbFam(ft)+' '+ft.ref)}" onerror="this.onerror=null;this.src='${esc(ft.img)}'"></div><div class="cb-mono-sm">${esc(ft.ref)}${ft.price?' · '+SYM[CUR]+cbThin(Math.round(ft.price*RATES[CUR])):''}</div></a>
       <div class="cb-hero__sealed">Sealed ${cbSealDate()}</div>
     </div>
   </section>

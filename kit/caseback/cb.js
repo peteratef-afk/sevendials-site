@@ -9,7 +9,7 @@ function cbSealDate(d){d=d||new Date();return String(d.getDate()).padStart(2,'0'
 function cbThin(n){return Number(n).toLocaleString('en-AU').replace(/,/g,'\u2009');}
 const CB_SEAL_SMALL='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#cbsmall"/></svg>';
 function cbSeal(onDark,num,date){const rim=onDark?'var(--cb-straw)':'var(--cb-bottle)',ink=onDark?'var(--cb-on-dark)':'var(--cb-bottle)';
-  return `<svg viewBox="0 0 200 200" fill="none" stroke="${ink}" role="img" aria-label="Caseback seal"><defs><path id="cbrim${onDark?1:0}" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" stroke-width="1.4"/><circle cx="100" cy="100" r="90" stroke-width="0.5"/><text font-family="Cormorant Garamond, serif" font-size="13.2" letter-spacing="3.6" font-weight="500" fill="${rim}" stroke="none"><textPath href="#cbrim${onDark?1:0}">INSPECTED · AUTHENTICATED · WARRANTED · CASEBACK DOWN UNDER ·</textPath></text><g transform="translate(38 38) scale(.62)" color="${ink}"><use href="#cbmark"/></g></svg>`;}
+  return `<svg viewBox="0 0 200 200" fill="none" stroke="${ink}" role="img" aria-label="Caseback seal"><defs><path id="cbrim${onDark?1:0}" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" stroke-width="1.4"/><circle cx="100" cy="100" r="90" stroke-width="0.5"/><text font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="1" font-weight="500" fill="${rim}" stroke="none"><textPath href="#cbrim${onDark?1:0}" textLength="458" lengthAdjust="spacing">INSPECTED · AUTHENTICATED · WARRANTED · CASEBACK DOWN UNDER ·</textPath></text><g transform="translate(38 38) scale(.62)" color="${ink}"><use href="#cbmark"/></g></svg>`;}
 function cbFam(it){let f=(it.family||'').replace(/\bIi\b/g,'II').replace(/\bIii\b/g,'III').replace(/\bGmt\b/g,'GMT').replace(/\s+/g,' ').trim();
   if(!f||/^watch$/i.test(f)||f.length>34) return it.ref;
   const m=(it.ref||'').match(/^(\d{4,6})/); if(m&&!f.includes(m[1])) f+=' '+m[1];
@@ -53,7 +53,6 @@ function home(){
     </div>
     <div class="cb-hero__panel">
       <div class="cb-hero__seal">${cbSeal(true)}</div>
-      <a class="cb-hero__tile" href="#item-${ft.id}"><div class="ph"><img src="${esc(ft.imgBig||ft.img)}" alt="${esc(ft.brand+' '+cbFam(ft)+' '+ft.ref)}" onerror="this.onerror=null;this.src='${esc(ft.img)}'"></div><div class="cb-mono-sm">${esc(ft.ref)}${ft.price?' · '+SYM[CUR]+cbThin(Math.round(ft.price*RATES[CUR])):''}</div></a>
       <div class="cb-hero__sealed">Sealed ${cbSealDate()}</div>
     </div>
   </section>

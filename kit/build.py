@@ -1,4 +1,20 @@
 import json,glob,re,os,sys,math
+
+def fmt_ref(brand,c):
+    """Display reference in the brand's official punctuation; returns c unchanged if the pattern doesn't fit."""
+    import re as _r
+    m=None
+    if brand=='Audemars Piguet': m=_r.fullmatch(r'(\d{5}[A-Z]{2})([A-Z0-9]{2})([A-Z0-9]{4}[A-Z]{2})(\d{2})',c); return '.'.join(m.groups()) if m else c
+    if brand=='Omega': m=_r.fullmatch(r'(\d{3})(\d{2})(\d{2})(\d{2})(\d{2})(\d{3})',c); return '.'.join(m.groups()) if m else c
+    if brand=='Longines': m=_r.fullmatch(r'(L\d)(\d{3})(\d)(\d{2})(\d)',c); return '.'.join(m.groups()) if m else c
+    if brand=='Tissot': m=_r.fullmatch(r'(T\d{3})(\d{3})(\d{2})(\d{3})(\d{2})',c); return '.'.join(m.groups()) if m else c
+    if brand=='Glashütte Original': m=_r.fullmatch(r'(\d)(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})',c); return '-'.join(m.groups()) if m else c
+    if brand=='Hublot': m=_r.fullmatch(r'(\d{3})([A-Z]{2})(\d{4})([A-Z]{2})(\d{4})?',c); return '.'.join(g for g in m.groups() if g) if m else c
+    if brand=='Vacheron Constantin': m=_r.fullmatch(r'(\d{4,5}[A-Z]?)(\d{3}[A-Z])([A-Z]?\d{3,4})',c); return f'{m[1]}/{m[2]}-{m[3]}' if m else c
+    if brand=='Blancpain': m=_r.fullmatch(r'(\d{4}[A-Z]?)(\d{4})([A-Z]?\d{2}[A-Z])',c); return '-'.join(m.groups()) if m else c
+    if brand=='Zenith': m=_r.fullmatch(r'(\d{2})(\d{4})(\d{4})(\d{2})([A-Z]\d{3,4})',c); return f'{m[1]}.{m[2]}.{m[3]}/{m[4]}.{m[5]}' if m else c
+    if brand=='Chopard': m=_r.fullmatch(r'(\d{6}) (\d{4})',c); return f'{m[1]}-{m[2]}' if m else c
+    return c
 def round_inc(v): return int(math.ceil(v/1000)*1000) if v>10000 else int(math.ceil(v-1e-9))
 HKD_AUD=0.185; GST=1.10
 # 9 Nov 2026 pricing rule (Peter): cost = the LOWER of VIP's price and the cheapest brand-NEW WhatsApp-group offer
@@ -96,7 +112,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         img=r.get('ST_IMG') or ''
         big=re.sub(r'\.jpg_\d+x\d+\.jpg','.jpg',img)
         if r.get('NO_ISSTOCK')==0: continue
-        items.append({"id":re.sub(r'[^a-z0-9]+','-',(slug+'-'+code).lower()).strip('-'),"brand":brand,"family":family,"ref":code,"material":mat,
+        items.append({"id":re.sub(r'[^a-z0-9]+','-',(slug+'-'+code).lower()).strip('-'),"brand":brand,"family":family,"ref":fmt_ref(brand,code),"refRaw":code,"material":mat,
           "dial":"","size":"","condition":("Enquire" if brand=="Patek Philippe" else "New"),"year":"","box":True,"papers":True,
           "price":price,"was":was,"hkd":hkd,"rrpHkd":src,"flags":flags,"sold":(r.get('NO_ISSTOCK')==0),
           "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"cost":(round(cost,2) if cost else None),"cap":(round(cap) if cap else None),"added":"2026-11-07"})
