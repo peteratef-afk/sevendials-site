@@ -1,4 +1,4 @@
-import json,glob,re,os,sys
+import json,glob,re,os,sys,math
 HKD_AUD=0.185; GST=1.10
 # 9 Nov 2026 pricing rule (Peter): cost = the LOWER of VIP's price and the cheapest brand-NEW WhatsApp-group offer
 # (last 30 days). Price ex-GST = cost + 10% target margin, rounded UP to a clean figure, but CAPPED at the other
@@ -74,7 +74,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         def conv(v):
             if not v: return None
             ex=v*HKD_AUD                       # ex-GST, straight conversion
-            return int(round(ex*GST))          # incl. GST (ex x 1.10)
+            return int(math.ceil(ex*GST/1000)*1000)  # incl. GST, rounded UP to $1,000
         was=None; flags=[]; src_price='vip'; sheet_base=None; price=None; cost=None; cap=None
         vip_aud=hkd*HKD_AUD if hkd else None
         sm=sheet_match(norm(code))
@@ -86,7 +86,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         # 9 Nov: price = VIP HKD converted to AUD, plus GST. Group prices kept only as reference (sheetBase), never used for pricing.
         if grp: sheet_base=round(grp)
         if vip_aud:
-            cost=vip_aud; cap=None; price=int(round(vip_aud*GST))
+            cost=vip_aud; cap=None; price=int(math.ceil(vip_aud*GST/1000)*1000)   # 9 Nov: round inc-GST UP to nearest $1,000
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
         lab=(r.get('ST_LABEL') or '').lower()
         if 'hot' in lab: flags.append('hot')
