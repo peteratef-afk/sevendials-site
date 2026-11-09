@@ -7,7 +7,7 @@ const CB_HOUSES=['Rolex','Patek Philippe','Audemars Piguet','Richard Mille'];
 const CB_ROMAN=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
 function cbSealDate(d){d=d||new Date();return String(d.getDate()).padStart(2,'0')+' · '+CB_ROMAN[d.getMonth()]+' · '+d.getFullYear();}
 function cbThin(n){return Number(n).toLocaleString('en-AU').replace(/,/g,'\u2009');}
-const CB_SEAL_SMALL='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#cbsmall"/></svg>';
+const CB_SEAL_SMALL='<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#cbmark"/></svg>';
 function cbSeal(onDark,num,date){const rim=onDark?'var(--cb-straw)':'var(--cb-bottle)',ink=onDark?'var(--cb-on-dark)':'var(--cb-bottle)';
   return `<svg viewBox="0 0 200 200" fill="none" stroke="${ink}" role="img" aria-label="Caseback seal"><defs><path id="cbrim${onDark?1:0}" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" stroke-width="1.4"/><circle cx="100" cy="100" r="90" stroke-width="0.5"/><text font-family="Cormorant Garamond, serif" font-size="11" letter-spacing="1" font-weight="500" fill="${rim}" stroke="none"><textPath href="#cbrim${onDark?1:0}" textLength="458" lengthAdjust="spacing">INSPECTED · AUTHENTICATED · WARRANTED · CASEBACK DOWN UNDER ·</textPath></text><g transform="translate(38 38) scale(.62)" color="${ink}"><use href="#cbmark"/></g></svg>`;}
 function cbFam(it){let f=(it.family||'').replace(/\bIi\b/g,'II').replace(/\bIii\b/g,'III').replace(/\bGmt\b/g,'GMT').replace(/\s+/g,' ').trim();
@@ -53,7 +53,7 @@ function home(){
     </div>
     <div class="cb-hero__panel">
       <div class="cb-hero__seal">${cbSeal(true)}</div>
-      <div class="cb-hero__sealed">Sealed ${cbSealDate()}</div>
+      <div class="cb-hero__sealed">Sealed X · I · 2014</div>
     </div>
   </section>
   <div class="wrap"><div class="cb-ledger">${CB_HOUSES.map(b=>`<a href="#brand-${slug(b)}"><b>${b}</b><span class="cb-mono-sm">${cbThin(cbHouseCount(b))}</span></a>`).join('')}</div></div>
