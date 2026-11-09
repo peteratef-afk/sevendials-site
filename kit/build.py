@@ -102,7 +102,8 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
           "price":price,"was":was,"hkd":hkd,"rrpHkd":src,"flags":flags,"sold":(r.get('NO_ISSTOCK')==0),
           "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"cost":(round(cost) if cost else None),"cap":(round(cap) if cap else None),"added":"2026-11-07"})
 json.dump(items,open('listings_vip.json','w'),ensure_ascii=False)
-tpl=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'index.template.html')).read()
+_d=os.path.dirname(os.path.abspath(__file__)); _cb=os.path.join(_d,'index.caseback.template.html')
+tpl=open(_cb if os.path.exists(_cb) else os.path.join(_d,'index.template.html')).read()   # Caseback presentation layer (9 Nov 2026); pricing/data unchanged
 open(os.environ.get('SITE_OUT','index.html'),'w').write(tpl.replace('__LISTINGS__',json.dumps(items,ensure_ascii=False).replace('</','<\\/')))
 from collections import Counter
 print(len(items),'items'); print(Counter(i['brand'] for i in items).most_common())

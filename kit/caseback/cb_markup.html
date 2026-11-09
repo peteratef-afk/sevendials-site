@@ -1,0 +1,43 @@
+<!-- CASEBACK HEADER -->
+<header class="cb-header"><div class="wrap cb-header__in">
+  <a href="#home" class="cb-lockup" aria-label="Caseback, fine watches, Melbourne">
+    <svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg>
+    <span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Melbourne</span></span>
+  </a>
+  <nav class="cb-nav" id="cbnav"><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a></nav>
+  <div class="cb-header__right">
+    <span class="cb-mono-sm">+61 499 005 000</span>
+    <a class="cb-btn cb-btn--accent" href="https://wa.me/61499005000" target="_blank" rel="noopener">Enquire</a>
+    <a class="cb-wa-sq" href="https://wa.me/61499005000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg></a>
+    <button class="cb-burger" onclick="cbMenu(true)" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+  </div>
+</div></header>
+<div class="cb-sheet" id="cbsheet"><div class="cb-sheet__top"><span class="cb-lockup" style="font-size:26px"><svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span></span></span><button class="cb-burger" style="display:inline-flex" onclick="cbMenu(false)" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav><a href="#home">Home</a><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a></nav>
+  <p class="cb-mono-sm" style="margin-top:32px">+61 499 005 000 · Level 1, 99 Queen Street, Melbourne</p>
+</div>
+<!-- legacy hooks kept so the existing data/pricing script runs unchanged -->
+<div class="hide"><ul id="mainnav"><li></li><li></li><li></li><li></li><li></li></ul><div id="megaBrands"></div><form id="searchbar"></form><span id="cartN"></span><span id="wlN"></span><div id="menu"></div></div>
+
+<main id="app"></main>
+
+<a class="cb-wa" id="cbwa" href="https://wa.me/61499005000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg></a>
+
+<div class="overlay" id="ov" onclick="closeAll()"></div>
+<div class="drawer" id="drawer"><div class="hd"><span id="drTitle"></span></div><div class="bd" id="drBody"></div><div class="ft" id="drFoot"></div></div>
+<div class="modal" id="modal"><button class="x" onclick="closeAll()" aria-label="Close">×</button><div id="modalBody"></div></div>
+<div class="toast" id="toast"></div>
+<div class="cs" id="cs"></div>
+
+<footer class="cb-footer"><div class="wrap">
+  <div class="cb-footer__cols">
+    <div>
+      <a href="#home" class="cb-lockup" aria-label="Caseback"><svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Melbourne</span></span></a>
+      <address class="cb-mono-sm">LEVEL 1, 99 QUEEN STREET<br>MELBOURNE VIC 3000<br>+61 499 005 000<br>SECOND-HAND DEALER LICENCE SHD-0016602 (VIC)</address>
+    </div>
+    <nav><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a><a href="#info-shipping">Delivery</a><a href="#info-warranty">Warranty and returns</a><a href="#info-privacy">Privacy and terms</a></nav>
+    <div><p class="tag">Known before it is worn</p></div>
+  </div>
+  <div class="cb-footer__legal"><span>NAP1 Pty Ltd trading as Caseback. Second-hand dealer licence SHD-0016602 (VIC). Prices in AUD include GST and follow the live HKD/AUD rate (<span id="fxNote">updated hourly</span>). Independent dealer, not affiliated with any brand shown.</span>
+    <label>Currency <select id="cur"><option value="AUD">AUD</option><option value="USD">USD</option><option value="NZD">NZD</option><option value="SGD">SGD</option></select></label></div>
+</div></footer>
