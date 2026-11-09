@@ -384,13 +384,17 @@ select option{background:#121214;color:#f3f1ec}
    movement, sku, added (YYYY-MM-DD)
 ======================================================= */
 const LISTINGS = window.LISTINGS || JSON.parse(document.getElementById('listings').textContent);
-/* ---- live pricing: VIP HKD x FX(HKD->AUD) x 1.02, ex-GST rounded UP to a clean figure, then +10% GST ---- */
-const PRICING={markup:1.02,gst:1.10,fallbackRate:0.185};
-let FX={rate:PRICING.fallbackRate,date:null};
-function cleanUp(ex){const step=ex<2000?100:(ex<10000?500:1000);return Math.ceil(ex/step)*step;}
-function priceFromHkd(h,rate){if(!h)return null;return Math.round(cleanUp(h*rate*PRICING.markup)*PRICING.gst);}
-function applyFx(rate,date){FX={rate,date};LISTINGS.forEach(it=>{if(it.hkd){const p=priceFromHkd(it.hkd,rate);if(it.was!=null&&it.price!=null){it.was=p;}else it.price=p;}});}
-applyFx(PRICING.fallbackRate,null);
+/* ---- live pricing (mirrors kit/build.py): cost = lower of VIP and cheapest brand-new group offer (AUD at base rate 0.185);
+   ex-GST = cost +10%, rounded UP to a clean figure, capped at the higher source (floor +2%); then +10% GST.
+   The browser rescales cost/cap by the live HKD/AUD rate from /fx.json. ---- */
+const PRICING={target:1.10,floor:1.02,gst:1.10,baseRate:0.185};
+let FX={rate:PRICING.baseRate,date:null};
+function stepOf(v){return v<2000?100:(v<10000?500:1000);}
+function cleanUp(v){return Math.ceil(v/stepOf(v))*stepOf(v);}
+function cleanDown(v){return Math.floor(v/stepOf(v))*stepOf(v);}
+function priceEx(cost,cap){let ex=cleanUp(cost*PRICING.target);if(cap!=null&&ex>cap){ex=Math.max(cleanDown(cap),cleanUp(cost*PRICING.floor));}return ex;}
+function applyFx(rate,date){FX={rate,date};const k=rate/PRICING.baseRate;LISTINGS.forEach(it=>{if(it.cost){const p=Math.round(priceEx(it.cost*k,it.cap!=null?it.cap*k:null)*PRICING.gst);if(it.was!=null&&it.price!=null){it.was=p;}else it.price=p;}});}
+applyFx(PRICING.baseRate,null);
 fetch('fx.json?t='+Math.floor(Date.now()/600000)).then(r=>r.ok?r.json():null).then(j=>{const r=j&&j.rates&&j.rates.AUD;if(r&&r>0.1&&r<0.3){applyFx(r,j.date||null);render();}}).catch(()=>{});
 const RATES = {AUD:1, USD:0.66, NZD:1.09, SGD:0.87};
 const SYM = {AUD:'A$', USD:'US$', NZD:'NZ$', SGD:'S$'};

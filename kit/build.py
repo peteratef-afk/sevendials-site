@@ -1,8 +1,24 @@
 import json,glob,re,os,sys
-HKD_AUD=0.185; MARKUP=1.02; GST=1.10   # 8 Nov 2026: Peter set margin to 2% over VIP; live FX applied in the browser from /fx.json
-SHEET_MARGIN=1.10   # margin over WhatsApp dealer asking price (brand-new listings, lowest in last 30 days)
-SHEET_EXCLUDE={'Rolex','Patek Philippe','Audemars Piguet','Richard Mille'}   # these stay on VIP pricing
-SHEET={}   # sheet-based pricing switched off 8 Nov 2026 (all brands priced from VIP HKD + 2%)
+HKD_AUD=0.185; GST=1.10
+# 9 Nov 2026 pricing rule (Peter): cost = the LOWER of VIP's price and the cheapest brand-NEW WhatsApp-group offer
+# (last 30 days). Price ex-GST = cost + 10% target margin, rounded UP to a clean figure, but CAPPED at the other
+# (higher) source so we are never the dearest of the two; floor 2% over cost. Then +10% GST.
+# Sanity: a group offer more than 30% under VIP is ignored unless seen at least twice in the window.
+TARGET=1.10; FLOOR=1.02; MARKUP=TARGET
+SHEET_MARGIN=1.10; SHEET_EXCLUDE=set()
+try: SHEET=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'group_prices.json')))
+except Exception: SHEET={}
+def clean_down(ex):
+    import math
+    step=100 if ex<2000 else (500 if ex<10000 else 1000)
+    return int(math.floor(ex/step)*step)
+def price_ex(cost,cap):
+    import math
+    step=lambda v:100 if v<2000 else (500 if v<10000 else 1000)
+    ex=int(math.ceil(cost*TARGET/step(cost*TARGET))*step(cost*TARGET))
+    if cap is not None and ex>cap:
+        ex=max(clean_down(cap), int(math.ceil(cost*FLOOR/step(cost*FLOOR))*step(cost*FLOOR)))
+    return ex
 def sheet_match(n):
     n=n.upper()
     if n in SHEET: return SHEET[n]
@@ -59,12 +75,20 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
             if not v: return None
             ex=clean_up(v*MARKUP*HKD_AUD)      # ex-GST, rounded UP to a clean number
             return int(round(ex*GST))          # incl. GST (ex x 1.10)
-        price=conv(hkd); was=None; flags=[]; src_price='vip'; sheet_base=None
-        sm=None if brand in SHEET_EXCLUDE else sheet_match(norm(code))
-        # guard: ignore a sheet price that is wildly off the VIP-derived price (bad currency / typo in a dealer post)
-        if sm and price and not (0.35*price <= sm['lowest']*SHEET_MARGIN*GST <= 2.5*price): sm=None
-        if sm:
-            sheet_base=sm['lowest']; ex=clean_up(sheet_base*SHEET_MARGIN); price=int(round(ex*GST)); src_price='sheet'
+        was=None; flags=[]; src_price='vip'; sheet_base=None; price=None; cost=None; cap=None
+        vip_aud=hkd*HKD_AUD if hkd else None
+        sm=sheet_match(norm(code))
+        if not sm and brand=='Audemars Piguet' and norm(code).upper()[:7] in SHEET: sm=SHEET[norm(code).upper()[:7]]   # groups post AP case refs only (e.g. 15510ST)
+        grp=sm['lowest'] if sm else None
+        # sanity: drop a lone group offer that is >30% under VIP (likely a typo/wrong currency) or absurdly far from VIP either way
+        if grp and vip_aud and (grp<0.70*vip_aud and sm.get('n',1)<2): grp=None
+        if grp and vip_aud and not (0.35*vip_aud<=grp<=2.5*vip_aud): grp=None
+        if vip_aud and grp:
+            cost=min(vip_aud,grp); cap=max(vip_aud,grp); src_price='group' if grp<vip_aud else 'vip'; sheet_base=round(grp)
+        elif vip_aud: cost=vip_aud
+        elif grp: cost=grp; src_price='group'; sheet_base=round(grp)
+        if cost:
+            ex=price_ex(cost,cap); price=int(round(ex*GST))
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
         lab=(r.get('ST_LABEL') or '').lower()
         if 'hot' in lab: flags.append('hot')
@@ -76,7 +100,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         items.append({"id":re.sub(r'[^a-z0-9]+','-',(slug+'-'+code).lower()).strip('-'),"brand":brand,"family":family,"ref":code,"material":mat,
           "dial":"","size":"","condition":("Enquire" if brand=="Patek Philippe" else "New"),"year":"","box":True,"papers":True,
           "price":price,"was":was,"hkd":hkd,"rrpHkd":src,"flags":flags,"sold":(r.get('NO_ISSTOCK')==0),
-          "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"added":"2026-11-07"})
+          "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"cost":(round(cost) if cost else None),"cap":(round(cap) if cap else None),"added":"2026-11-07"})
 json.dump(items,open('listings_vip.json','w'),ensure_ascii=False)
 tpl=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'index.template.html')).read()
 open(os.environ.get('SITE_OUT','index.html'),'w').write(tpl.replace('__LISTINGS__',json.dumps(items,ensure_ascii=False).replace('</','<\\/')))
