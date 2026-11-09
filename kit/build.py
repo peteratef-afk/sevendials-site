@@ -1,4 +1,5 @@
 import json,glob,re,os,sys,math
+def round_inc(v): return int(math.ceil(v/1000)*1000) if v>10000 else int(math.ceil(v-1e-9))
 HKD_AUD=0.185; GST=1.10
 # 9 Nov 2026 pricing rule (Peter): cost = the LOWER of VIP's price and the cheapest brand-NEW WhatsApp-group offer
 # (last 30 days). Price ex-GST = cost + 10% target margin, rounded UP to a clean figure, but CAPPED at the other
@@ -74,7 +75,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         def conv(v):
             if not v: return None
             ex=v*HKD_AUD                       # ex-GST, straight conversion
-            return int(math.ceil(ex*GST/1000)*1000)  # incl. GST, rounded UP to $1,000
+            return round_inc(ex*GST)
         was=None; flags=[]; src_price='vip'; sheet_base=None; price=None; cost=None; cap=None
         vip_aud=hkd*HKD_AUD if hkd else None
         sm=sheet_match(norm(code))
@@ -86,7 +87,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         # 9 Nov: price = VIP HKD converted to AUD, plus GST. Group prices kept only as reference (sheetBase), never used for pricing.
         if grp: sheet_base=round(grp)
         if vip_aud:
-            cost=vip_aud; cap=None; price=int(math.ceil(vip_aud*GST/1000)*1000)   # 9 Nov: round inc-GST UP to nearest $1,000
+            cost=vip_aud; cap=None; price=round_inc(vip_aud*GST)   # 9 Nov: >$10k up to nearest $1,000, else up to whole dollar
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
         lab=(r.get('ST_LABEL') or '').lower()
         if 'hot' in lab: flags.append('hot')
@@ -98,7 +99,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         items.append({"id":re.sub(r'[^a-z0-9]+','-',(slug+'-'+code).lower()).strip('-'),"brand":brand,"family":family,"ref":code,"material":mat,
           "dial":"","size":"","condition":("Enquire" if brand=="Patek Philippe" else "New"),"year":"","box":True,"papers":True,
           "price":price,"was":was,"hkd":hkd,"rrpHkd":src,"flags":flags,"sold":(r.get('NO_ISSTOCK')==0),
-          "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"cost":(round(cost) if cost else None),"cap":(round(cap) if cap else None),"added":"2026-11-07"})
+          "movement":"","sku":"VS-"+code,"img":img,"imgBig":big,"src":"vipstation","priceSource":src_price,"sheetBase":sheet_base,"cost":(round(cost,2) if cost else None),"cap":(round(cap) if cap else None),"added":"2026-11-07"})
 json.dump(items,open('listings_vip.json','w'),ensure_ascii=False)
 _d=os.path.dirname(os.path.abspath(__file__)); _cb=os.path.join(_d,'index.caseback.template.html')
 tpl=open(_cb if os.path.exists(_cb) else os.path.join(_d,'index.template.html')).read()   # Caseback presentation layer (9 Nov 2026); pricing/data unchanged

@@ -408,7 +408,7 @@ function stepOf(v){return v<2000?100:(v<10000?500:1000);}
 function cleanUp(v){return Math.ceil(v/stepOf(v))*stepOf(v);}
 function cleanDown(v){return Math.floor(v/stepOf(v))*stepOf(v);}
 function priceEx(cost,cap){return cost;}
-function applyFx(rate,date){FX={rate,date};const k=rate/PRICING.baseRate;LISTINGS.forEach(it=>{if(it.cost){const p=Math.ceil(priceEx(it.cost*k,it.cap!=null?it.cap*k:null)*PRICING.gst/1000)*1000;if(it.was!=null&&it.price!=null){it.was=p;}else it.price=p;}});}
+function applyFx(rate,date){FX={rate,date};const k=rate/PRICING.baseRate;LISTINGS.forEach(it=>{if(it.cost){const v=priceEx(it.cost*k,it.cap!=null?it.cap*k:null)*PRICING.gst;const p=v>10000?Math.ceil(v/1000)*1000:Math.ceil(v-1e-9);if(it.was!=null&&it.price!=null){it.was=p;}else it.price=p;}});}
 applyFx(PRICING.baseRate,null);
 fetch('fx.json?t='+Math.floor(Date.now()/600000)).then(r=>r.ok?r.json():null).then(j=>{const r=j&&j.rates&&j.rates.AUD;if(r&&r>0.1&&r<0.3){applyFx(r,j.date||null);render();}}).catch(()=>{});
 const RATES = {AUD:1, USD:0.66, NZD:1.09, SGD:0.87};
