@@ -34,6 +34,16 @@ function grid(items){return items.length?`<div class="cb-grid">${items.map(i=>ca
 function cbEmpty(){return `<div class="cb-empty"><h3>Nothing matches that yet.</h3><p>Tell us what you are after and we will source it.</p><a class="cb-btn" href="https://wa.me/61499005000?text=${encodeURIComponent('Hello, I am looking for a watch. Can you source it?')}" target="_blank" rel="noopener">Ask us to source it</a></div>`;}
 
 /* home */
+/* "Sealed this week": a fresh set every Monday 00:00 Melbourne time, same for every visitor that week. */
+function cbMelbWeek(){const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Australia/Melbourne',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  const d=Date.UTC(+p.slice(0,4),+p.slice(5,7)-1,+p.slice(8,10))/864e5; return Math.floor((d+3)/7);}  // epoch day 0 was a Thursday, +3 aligns weeks to Monday
+function cbWeeklyPicks(n){let s=(cbMelbWeek()*2654435761)>>>0;const rnd=()=>{s=(s+0x6D2B79F5)>>>0;let t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;};
+  const pool=LISTINGS.filter(x=>!x.sold&&x.img&&x.price&&CB_HOUSES.includes(x.brand)&&(x.family||'').length>3&&!/full set/i.test(x.family)).sort((a,b)=>a.id<b.id?-1:1);
+  for(let i=pool.length-1;i>0;i--){const k=Math.floor(rnd()*(i+1));[pool[i],pool[k]]=[pool[k],pool[i]];}
+  const out=[],seen=new Set();for(const x of pool){if(seen.has(x.brand))continue;seen.add(x.brand);out.push(x);if(out.length===n)break;}
+  for(const x of pool){if(out.length>=n)break;if(!out.includes(x))out.push(x);}
+  return out;}
+
 function cbFeatured(){const pick=(f)=>LISTINGS.find(f);
   return pick(x=>/^5711/.test(x.ref)&&x.price&&x.img)||pick(x=>x.brand==='Patek Philippe'&&x.family==='Nautilus'&&x.price&&x.img)||pick(x=>x.brand==='Rolex'&&x.family==='Daytona'&&x.price&&x.img)||LISTINGS.find(x=>x.price&&x.img)||LISTINGS[0];}
 function cbHouseRep(b){const fam={'Rolex':'Submariner','Patek Philippe':'Nautilus','Audemars Piguet':'Royal Oak','Richard Mille':null}[b];
@@ -41,7 +51,7 @@ function cbHouseRep(b){const fam={'Rolex':'Submariner','Patek Philippe':'Nautilu
 function home(){
   const total=LISTINGS.filter(x=>!x.sold).length;
   const ft=cbFeatured();
-  const newest=LISTINGS.filter(x=>!x.sold&&x.img&&x.price&&CB_HOUSES.includes(x.brand)).sort((a,b)=>(b.added||'').localeCompare(a.added||'')).slice(0,3);
+  const newest=cbWeeklyPicks(3);
   return `
   <section class="cb-hero">
     <div class="cb-hero__copy">
