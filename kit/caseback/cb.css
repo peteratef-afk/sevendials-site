@@ -49,7 +49,7 @@ img{display:block;max-width:100%}
 /* lockup */
 .cb-lockup{display:inline-flex;align-items:center;gap:.28em;color:var(--cb-peat);text-decoration:none;font-size:var(--cb-text-wordmark)}
 .cb-lockup:hover{color:var(--cb-peat)}
-.cb-lockup__mark{width:1em;height:1em;flex:none}
+.cb-lockup__mark{width:1.6em;height:1.6em;flex:none}
 .cb-lockup__text{display:flex;flex-direction:column;gap:.1em}
 .cb-lockup__word{font-family:var(--cb-font-display);font-weight:500;font-size:1em;line-height:.86;letter-spacing:-.015em}
 .cb-lockup__desc{font-family:var(--cb-font-ui);font-size:.3125em;letter-spacing:var(--cb-track-desc);text-transform:uppercase;color:var(--cb-bottle);padding-left:.12em;white-space:nowrap}

@@ -4,7 +4,7 @@ HKD_AUD=0.185; GST=1.10
 # (last 30 days). Price ex-GST = cost + 10% target margin, rounded UP to a clean figure, but CAPPED at the other
 # (higher) source so we are never the dearest of the two; floor 2% over cost. Then +10% GST.
 # Sanity: a group offer more than 30% under VIP is ignored unless seen at least twice in the window.
-TARGET=1.10; FLOOR=1.02; MARKUP=TARGET
+TARGET=1.00; FLOOR=1.00; MARKUP=TARGET   # 9 Nov: straight VIP price, no markup
 SHEET_MARGIN=1.10; SHEET_EXCLUDE=set()
 try: SHEET=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'group_prices.json')))
 except Exception: SHEET={}
@@ -73,7 +73,7 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
             return int(math.ceil(ex/step)*step)
         def conv(v):
             if not v: return None
-            ex=clean_up(v*MARKUP*HKD_AUD)      # ex-GST, rounded UP to a clean number
+            ex=v*HKD_AUD                       # ex-GST, straight conversion
             return int(round(ex*GST))          # incl. GST (ex x 1.10)
         was=None; flags=[]; src_price='vip'; sheet_base=None; price=None; cost=None; cap=None
         vip_aud=hkd*HKD_AUD if hkd else None
@@ -83,12 +83,10 @@ for f in sorted(glob.glob(os.path.join(os.environ.get('OUT_DIR','out'),'*.jsonl'
         # sanity: drop a lone group offer that is >30% under VIP (likely a typo/wrong currency) or absurdly far from VIP either way
         if grp and vip_aud and (grp<0.70*vip_aud and sm.get('n',1)<2): grp=None
         if grp and vip_aud and not (0.35*vip_aud<=grp<=2.5*vip_aud): grp=None
-        if vip_aud and grp:
-            cost=min(vip_aud,grp); cap=max(vip_aud,grp); src_price='group' if grp<vip_aud else 'vip'; sheet_base=round(grp)
-        elif vip_aud: cost=vip_aud
-        elif grp: cost=grp; src_price='group'; sheet_base=round(grp)
-        if cost:
-            ex=price_ex(cost,cap); price=int(round(ex*GST))
+        # 9 Nov: price = VIP HKD converted to AUD, plus GST. Group prices kept only as reference (sheetBase), never used for pricing.
+        if grp: sheet_base=round(grp)
+        if vip_aud:
+            cost=vip_aud; cap=None; price=int(round(vip_aud*GST))
         if r.get('NO_ISTL') and tl and hkd and tl<hkd: flags.append('flash'); was=price; price=conv(tl)
         lab=(r.get('ST_LABEL') or '').lower()
         if 'hot' in lab: flags.append('hot')

@@ -1,8 +1,60 @@
 <!-- CASEBACK HEADER -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="cbmark" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- case + grip ring -->
+  <circle cx="100" cy="100" r="94" stroke-width="3.2"/>
+  <circle cx="100" cy="100" r="82" stroke-width="11" stroke-dasharray="12 18.37" stroke-dashoffset="6" opacity=".92"/>
+  <circle cx="100" cy="100" r="68" stroke-width="1.1"/>
+  <clipPath id="cbwin"><circle cx="100" cy="100" r="67"/></clipPath>
+  <g clip-path="url(#cbwin)">
+   <!-- Geneva stripes on the plate -->
+   <g stroke-width=".7" opacity=".35"><path d="M20 52L180 30M20 66L180 44M20 80L180 58M20 94L180 72M20 108L180 86M20 122L180 100M20 136L180 114M20 150L180 128M20 164L180 142M20 178L180 156"/></g>
+   <!-- barrel (large wheel, top right) -->
+   <g id="barrel" transform="translate(132 72)"><circle r="23" stroke-width="1.6"/><circle r="19.5" stroke-width=".8"/><circle r="4" stroke-width="1.4"/><path d="M-19.5 0h-3M19.5 0h3M0 -19.5v-3M0 19.5v3M-13.8 -13.8l-2.1 -2.1M13.8 -13.8l2.1 -2.1M-13.8 13.8l-2.1 2.1M13.8 13.8l2.1 2.1M-18 -7.5l-2.8 -1.2M18 -7.5l2.8 -1.2M-18 7.5l-2.8 1.2M18 7.5l2.8 1.2M-7.5 -18l-1.2 -2.8M7.5 -18l1.2 -2.8M-7.5 18l-1.2 2.8M7.5 18l1.2 2.8" stroke-width="1.6"/><path d="M-4 -12a12.6 12.6 0 0 1 8 0M-12 4a12.6 12.6 0 0 1 0 -8M12 4a12.6 12.6 0 0 0 0 -8M-4 12a12.6 12.6 0 0 0 8 0" stroke-width="1.2"/></g>
+   <!-- centre wheel -->
+   <g transform="translate(104 108)"><circle r="16" stroke-width="1.5"/><circle r="3" stroke-width="1.3"/><path d="M0 -16v-3M0 16v3M-16 0h-3M16 0h3M-11.3 -11.3l-2.1 -2.1M11.3 -11.3l2.1 -2.1M-11.3 11.3l-2.1 2.1M11.3 11.3l2.1 2.1M-14.8 -6.1l-2.8 -1.2M14.8 -6.1l2.8 -1.2M-14.8 6.1l-2.8 1.2M14.8 6.1l2.8 1.2M-6.1 -14.8l-1.2 -2.8M6.1 -14.8l1.2 -2.8M-6.1 14.8l-1.2 2.8M6.1 14.8l1.2 2.8" stroke-width="1.4"/><path d="M-9 -5l9 -2 9 2M-9 5l9 2 9 -2M-10 0h-4M14 0h-4" stroke-width="1"/><path d="M0 -3v-9M0 3v9" stroke-width="1"/></g>
+   <!-- third wheel -->
+   <g transform="translate(70 76)"><circle r="12" stroke-width="1.4"/><circle r="2.4" stroke-width="1.2"/><path d="M0 -12v-2.6M0 12v2.6M-12 0h-2.6M12 0h2.6M-8.5 -8.5l-1.8 -1.8M8.5 -8.5l1.8 -1.8M-8.5 8.5l-1.8 1.8M8.5 8.5l1.8 1.8M-11 -4.6l-2.4 -1M11 -4.6l2.4 -1M-11 4.6l-2.4 1M11 4.6l2.4 1M-4.6 -11l-1 -2.4M4.6 -11l1 -2.4M-4.6 11l-1 2.4M4.6 11l1 2.4" stroke-width="1.3"/><path d="M0 -2.4v-7M0 2.4v7M-2.4 0h-7M2.4 0h7" stroke-width=".9"/></g>
+   <!-- fourth wheel -->
+   <g transform="translate(130 134)"><circle r="12" stroke-width="1.4"/><circle r="2.4" stroke-width="1.2"/><path d="M0 -12v-2.6M0 12v2.6M-12 0h-2.6M12 0h2.6M-8.5 -8.5l-1.8 -1.8M8.5 -8.5l1.8 -1.8M-8.5 8.5l-1.8 1.8M8.5 8.5l1.8 1.8M-11 -4.6l-2.4 -1M11 -4.6l2.4 -1M-11 4.6l-2.4 1M11 4.6l2.4 1M-4.6 -11l-1 -2.4M4.6 -11l1 -2.4M-4.6 11l-1 2.4M4.6 11l1 2.4" stroke-width="1.3"/><path d="M0 -2.4v-7M0 2.4v7M-2.4 0h-7M2.4 0h7" stroke-width=".9"/></g>
+   <!-- escape wheel (sharp teeth) -->
+   <g transform="translate(100 150)"><circle r="7.5" stroke-width="1.2"/><circle r="1.6" stroke-width="1"/><path d="M0 -7.5l1.5 -3.5M7.1 -2.3l3.6 -1M4.4 6.1l2.6 2.6M-4.4 6.1l-1 3.6M-7.1 -2.3l-3.6 1" stroke-width="1.2"/></g>
+   <!-- pallet fork -->
+   <path d="M90 143l-16 -12" stroke-width="1.6"/><path d="M74 131l-3 -5M74 131l-6 1" stroke-width="1.2"/><circle cx="74" cy="131" r="1.8" stroke-width="1"/>
+   <!-- balance wheel, hairspring, regulator -->
+   <g transform="translate(62 122)">
+    <circle r="23" stroke-width="2.4"/><circle r="19.5" stroke-width=".8"/>
+    <path d="M-19.5 0h39M0 -19.5v39" stroke-width="1.1"/>
+    <path d="M0 0m1 0a1 1 0 0 1 -1 1 2 2 0 0 1 -2 -2 3 3 0 0 1 3 -3 4 4 0 0 1 4 4 5 5 0 0 1 -5 5 6 6 0 0 1 -6 -6 7 7 0 0 1 7 -7 8 8 0 0 1 8 8 9 9 0 0 1 -9 9 10 10 0 0 1 -10 -10 11 11 0 0 1 11 -11 12 12 0 0 1 12 12 13 13 0 0 1 -13 13" stroke-width=".8"/>
+    <circle r="2.4" fill="currentColor" stroke="none"/>
+    <path d="M-14 -16l-4 -5" stroke-width="1.2"/>
+   </g>
+   <!-- balance cock (bridge over the balance) -->
+   <path d="M62 97c14 -8 30 -8 44 -2c6 2.5 9 8 8 14l-7 1c-4 -5 -11 -7 -17 -5c-10 3 -19 6 -28 12" stroke-width="2.2"/>
+   <path d="M66 100c12 -6 26 -6 38 -1" stroke-width=".8" opacity=".7"/>
+   <circle cx="109" cy="110" r="3.6" stroke-width="1.5"/><path d="M106.5 107.5l5 5" stroke-width="1.2"/>
+   <!-- train bridge (top) -->
+   <path d="M44 62c14 -16 34 -24 56 -24c22 0 42 8 56 24l-8 6c-12 -13 -30 -21 -48 -21c-18 0 -35 8 -47 21z" stroke-width="2"/>
+   <path d="M50 64c12 -13 30 -21 50 -21s38 8 50 21" stroke-width=".8" opacity=".7"/>
+   <!-- barrel bridge (right) -->
+   <path d="M154 86c6 12 8 26 4 40l-8 -2c3 -12 2 -24 -3 -35z" stroke-width="2"/>
+   <!-- lower bridge -->
+   <path d="M78 158c14 8 30 8 44 0l4 6c-16 9 -36 9 -52 0z" stroke-width="2"/>
+   <!-- screws -->
+   <g stroke-width="1.5"><circle cx="100" cy="44" r="3.4"/><path d="M97.6 41.6l4.8 4.8"/><circle cx="48" cy="68" r="3.2"/><path d="M45.8 65.8l4.4 4.4"/><circle cx="152" cy="68" r="3.2"/><path d="M149.8 70.2l4.4 -4.4"/><circle cx="156" cy="122" r="3.2"/><path d="M153.8 122h4.4"/><circle cx="52" cy="150" r="3.2"/><path d="M52 147.8v4.4"/><circle cx="124" cy="162" r="3"/><path d="M121.9 159.9l4.2 4.2"/></g>
+   <!-- jewels (solid) -->
+   <g fill="currentColor" stroke="none"><circle cx="88" cy="56" r="2"/><circle cx="118" cy="60" r="2"/><circle cx="146" cy="104" r="2"/><circle cx="84" cy="146" r="2"/><circle cx="60" cy="98" r="1.6"/></g>
+  </g>
+ </symbol><symbol id="cbsmall" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-linecap="round">
+  <circle cx="100" cy="100" r="94" stroke-width="4"/>
+  <circle cx="100" cy="100" r="80" stroke-width="14" stroke-dasharray="12 17.9" stroke-dashoffset="6"/>
+  <circle cx="100" cy="100" r="34" stroke-width="3"/><path d="M100 66v68M66 100h68" stroke-width="1.6"/><circle cx="100" cy="100" r="4" fill="currentColor" stroke="none"/>
+  <path d="M126 80c10 -14 30 -16 42 -6" stroke-width="3"/>
+ </symbol></defs></svg>
+
 <header class="cb-header"><div class="wrap cb-header__in">
   <a href="#home" class="cb-lockup" aria-label="Caseback, fine watches, Melbourne">
-    <svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg>
-    <span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Melbourne</span></span>
+    <svg class="cb-lockup__mark" viewBox="0 0 200 200" aria-hidden="true"><use href="#cbmark"/></svg>
+    <span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Down Under</span></span>
   </a>
   <nav class="cb-nav" id="cbnav"><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a></nav>
   <div class="cb-header__right">
@@ -12,7 +64,7 @@
     <button class="cb-burger" onclick="cbMenu(true)" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
   </div>
 </div></header>
-<div class="cb-sheet" id="cbsheet"><div class="cb-sheet__top"><span class="cb-lockup" style="font-size:26px"><svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span></span></span><button class="cb-burger" style="display:inline-flex" onclick="cbMenu(false)" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="cb-sheet" id="cbsheet"><div class="cb-sheet__top"><span class="cb-lockup" style="font-size:26px"><svg class="cb-lockup__mark" viewBox="0 0 200 200" aria-hidden="true"><use href="#cbmark"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span></span></span><button class="cb-burger" style="display:inline-flex" onclick="cbMenu(false)" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <nav><a href="#home">Home</a><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a></nav>
   <p class="cb-mono-sm" style="margin-top:32px">+61 499 005 000 · Level 1, 99 Queen Street, Melbourne</p>
 </div>
@@ -32,7 +84,7 @@
 <footer class="cb-footer"><div class="wrap">
   <div class="cb-footer__cols">
     <div>
-      <a href="#home" class="cb-lockup" aria-label="Caseback"><svg class="cb-lockup__mark" viewBox="0 0 140 140" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="70" cy="70" r="66" stroke-width="3.5"/><circle cx="70" cy="70" r="57" stroke-width="13" stroke-dasharray="12 17.85" stroke-dashoffset="6"/><circle cx="70" cy="70" r="38" stroke-width="3.5"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Melbourne</span></span></a>
+      <a href="#home" class="cb-lockup" aria-label="Caseback"><svg class="cb-lockup__mark" viewBox="0 0 200 200" aria-hidden="true"><use href="#cbmark"/></svg><span class="cb-lockup__text"><span class="cb-lockup__word">Caseback</span><span class="cb-lockup__desc">Fine watches · Down Under</span></span></a>
       <address class="cb-mono-sm">LEVEL 1, 99 QUEEN STREET<br>MELBOURNE VIC 3000<br>+61 499 005 000<br>SECOND-HAND DEALER LICENCE SHD-0016602 (VIC)</address>
     </div>
     <nav><a href="#watches">Watches</a><a href="#sell">Sell</a><a href="#visit">Visit</a><a href="#info-shipping">Delivery</a><a href="#info-warranty">Warranty and returns</a><a href="#info-privacy">Privacy and terms</a></nav>
