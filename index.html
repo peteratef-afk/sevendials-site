@@ -859,6 +859,9 @@ function render(){
   app.innerHTML=out;
 }
 
+/* self-update: lets the server refresh itself from GitHub (no cron needed) */
+try{setTimeout(()=>fetch('update.php',{cache:'no-store'}).catch(()=>{}),4000);}catch(e){}
+
 renderBadges();render();
 </script>
 </body>

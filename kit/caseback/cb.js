@@ -247,3 +247,6 @@ function render(){
   else out=`<div class="wrap"><div class="cb-empty"><h3>This reference is not in the ledger.</h3><p>Try the collection, or ask us to source it.</p><a class="cb-btn" href="#watches">View the collection</a></div></div>`;
   app.innerHTML=out;
 }
+
+/* self-update: lets the server refresh itself from GitHub (no cron needed) */
+try{setTimeout(()=>fetch('update.php',{cache:'no-store'}).catch(()=>{}),4000);}catch(e){}
